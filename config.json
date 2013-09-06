@@ -1,0 +1,18 @@
+{
+    "pages" : [
+        "home", 
+        "prices",
+        "camping_map",
+        "route",
+        "gallery",
+        "offers",
+        "surroundings",
+        "booking"          
+    ],
+    "langs" : [
+        "eng",
+        "ita",
+        "ned",
+        "ger"
+    ]
+}

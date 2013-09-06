@@ -1,0 +1,1 @@
+RewriteRule ^libs/ - [F,L]

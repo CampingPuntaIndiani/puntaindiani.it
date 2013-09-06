@@ -1,0 +1,153 @@
+/* classic fix */
+body{
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+/* NavBar */
+li a{
+  text-transform: capitalize;
+}
+
+.navbar a.brand{
+  margin-left: 0;
+}
+
+.navbar a.logo{
+  max-height: 40px;
+  height: 40px;
+  padding: 0 !important;  
+}
+
+.navbar a.logo > img {
+  max-height: 38px;
+  height: 38px;
+  margin-top: 1px;
+  opacity: .8;
+}
+
+.navbar a.logo > img:hover {
+  opacity: 1;
+}
+
+.carousel-control {
+  margin-top: -20px;
+  top: 50%;
+}
+
+#head_carousel .carousel-inner {
+  max-height: 366px !important;
+  min-height: 50px;
+  background-image: url('../img/loading.gif') ;
+  -moz-background-size: 40px 40px; /* Firefox 3.6 */
+  background-size: 40px 40px;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+
+div.control-group > label.control-label:after {
+    content: '\00a0';
+}
+
+.nav.pull-right > noscript > li{
+    float: left;
+}
+.nav.pull-right > noscript > li > a{
+    color: #000000;
+    float: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #FFCC33;
+    display: block;
+}
+.flag {
+    background-image: url('/static/img/flags_ico.png') ;
+    background-size: 224px 160px;
+    display: inline-block;
+    width: 14px;
+    height: 10px;
+    margin-right: .3em;
+    line-height: 20px;
+    background-repeat: no-repeat;
+    background-position: -16px 0
+}
+.flag.flag-ita {background-position: -182px -60px}
+.flag.flag-ger {background-position: -70px -30px}
+.flag.flag-ned {background-position: -70px -100px}
+.flag.flag-eng {background-position: -154px -40px}
+
+/* Carousell style */
+.carousel img{ width:100%; }
+
+/* footer */
+footer .thumbnails img{
+  max-height: 45px;
+  min-height: 45px;
+  height: 45px;
+  width: auto;
+}
+
+/* Price table */
+.table td, .table th{
+  vertical-align: middle;
+  text-align: center;
+}
+td.prices:before{ content : "\20ac  "; }
+
+td.prices.gratis:before{ content : "GRATIS"; }
+
+td.prices.special{
+    background-color: #FFD761 !important;
+    background-image: linear-gradient(to bottom, #FFDF80, #FFCC33) !important;
+    background-repeat: repeat-x !important;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25) !important;
+    color: #F00 !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
+}
+td.prices.gratis{
+    background-color: #5BB75B !important;
+    background-image: linear-gradient(to bottom, #62C462, #51A351) !important;
+    background-repeat: repeat-x !important;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25) !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Gallery */
+li.gallery-ico:hover img, footer .thumbnails img:hover{
+  -webkit-transform: scale(1.2) rotate(-2deg);
+  -moz-transform: scale(1.2) rotate(-2deg);
+  -o-transform: scale(1.2) rotate(-2deg);
+  transform: scale(1.2) rotate(-2deg);
+  border-color: #0e90d2;
+}
+li.gallery-ico img {
+  width:100%;
+  height: 125px;
+  max-height: 125px;
+}
+
+h3 { text-transform: capitalize; }
+.modal-footer { text-align: center; }
+
+form label.control-label, form button, form a {text-transform: capitalize; }
+
+/* general purpose */
+.rot90 {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    /* also accepts left, right, top, bottom coordinates; not required, but a good idea for styling */
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    -o-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    /* Should be unset in IE9+ I think. */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.centered { text-align: center; }
