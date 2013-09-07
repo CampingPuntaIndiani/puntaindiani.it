@@ -21,6 +21,35 @@
     <link rel="stylesheet" media="all" type="text/css" href="/static/css/fixes.css">
 
     <link rel="stylesheet" media="all" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu:300,500,700&subset=latin">
+    <style type="text/css">
+<?php
+  $tot = count($GLOBALS['dict']->{'news'});
+  $lh = 31;
+  $css_a = array();
+  $i=0;
+  for($step=0; $step <= 100; $step+=100/$tot) {
+    array_push($css_a, ceil($step).'% {margin-top: -'.($lh*$i).'px;}');
+    $i++;
+  }
+  array_push($css_a, "100% {margin-top: 0;}");
+  $css = ''.join($css_a);
+?>
+    
+@-webkit-keyframes ticker {
+  <?=$css?>
+}
+@-moz-keyframes ticker {
+  <?=$css?>
+}
+@-ms-keyframes ticker {
+  <?=$css?>
+}
+@keyframes ticker {
+  <?=$css?>
+}
+    </style>
+    <!-- this has to be loaded as soon as is possible otherwaise some inline js will not work -->
+    <script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
 
   </head>
   <body>
@@ -43,7 +72,7 @@
             <li class="<?=($_SESSION['page']=="home"?"active":"")?>"><a href="/?page=home" data-page="home"><i class="icon-home"></i><?php echo $GLOBALS['dict']->menu->{$_SESSION['lang']}->home; ?></a></li>
             <li class="<?=($_SESSION['page']=="prices"?"active":"")?>"><a href="/?page=prices" data-page="prices"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->prices?></a></li>
             <li class="<?=($_SESSION['page']=="map"?"active":"")?>"><a href="/?page=camping_map" data-page="camping_map"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->map?></a></li>
-            <li class="<?=($_SESSION['page']=="location"?"active":"")?>"><a href="/?page=route" data-page="route"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->location?></a></li>
+            <li class="<?=($_SESSION['page']=="route"?"active":"")?>"><a href="/?page=route" data-page="route"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->location?></a></li>
             <li class="<?=($_SESSION['page']=="gallery"?"active":"")?>"><a href="/?page=gallery" data-page="gallery"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->gallery?></a></li>
             <li class="<?=($_SESSION['page']=="offers"?"active":"")?>"><a href="/?page=offers" data-page="offers"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->offers?></a></li>
             <li class="<?=($_SESSION['page']=="surroundings"?"active":"")?>"><a href="/?page=surroundings" data-page="surroundings"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->surroundings?></a></li>
@@ -86,8 +115,6 @@
         <?php $c_fst=false;?>
       <?php endforeach; ?>
       </div>
-      <!-- loading -->
-      <div class="loading hide"><img src="static/img/black.png"/></div>
       <!-- Carousel nav -->
       <a class="carousel-control left" href="#head_carousel" data-slide="prev">&lsaquo;</a>
       <a class="carousel-control right" href="#head_carousel" data-slide="next">&rsaquo;</a>
@@ -102,6 +129,31 @@
         </div>
       </div>
     </noscript>
+
+    <section name="news">
+      <div class="container">
+          <div class="well well-small" id="news_ticker">
+            <ul>
+              <?php
+                $now = new DateTime('NOW');
+                foreach ($GLOBALS['dict']->{'news'} as $key => $news) {
+                  if ($news->{'active'}) {
+                    $from = DateTime::createFromFormat('Y-m-d', $news->{'from'});
+                    $to = DateTime::createFromFormat('Y-m-d', $news->{'to'});
+                    if ($from <= $now and $now < $to) {
+                      $str = array('<li><a>');
+                      array_push($str, '<span class="text-warning"><strong>'.$news->{'pre'}.'</strong></span>&nbsp');
+                      array_push($str, '<span class="text-info"><strong><em>'.$news->{'msg'}->{$_SESSION['lang']}.'</em><strong></span>');
+                      array_push($str, '</a></li>');
+                      print(''.join($str));
+                    }
+                  }
+                }
+              ?>
+            </ul>
+          </div>
+      </div>
+    </section>
 
     <!-- Page entry point -->
     <section class="container" name="body">

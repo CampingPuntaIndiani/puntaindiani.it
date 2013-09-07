@@ -8,10 +8,96 @@
         "ita" : "italiano"
     },
     "carousel" : [
-      {"url" : "static/img/carousel/CampingPuntaIndianiHeader0.jpg"},
-      {"url" : "static/img/carousel/CampingPuntaIndianiHeader1.jpg"},
-      {"url" : "static/img/carousel/CampingPuntaIndianiHeader4.jpg"},
-      {"url" : "static/img/carousel/CampingPuntaIndianiHeader6.jpg"}
+        {"url" : "static/img/carousel/CampingPuntaIndianiHeader0.jpg"},
+        {"url" : "static/img/carousel/CampingPuntaIndianiHeader1.jpg"},
+        {"url" : "static/img/carousel/CampingPuntaIndianiHeader4.jpg"},
+        {"url" : "static/img/carousel/CampingPuntaIndianiHeader6.jpg"}
+    ],
+    "news" : [
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        }
     ],
     "prices" : {
       "year" : "2013",
@@ -148,7 +234,7 @@
         "ger": {
             "info": "Informationen",
             "map": "Plan",
-            "offers": "Angebot-news",
+            "offers": "Angebot",
             "welcome": "Wilkommen",
             "gallery": "Gallery",
             "languages": "sprachen",
@@ -164,7 +250,7 @@
         "ned": {
             "info": "Informatie",
             "map": "Plattegrond",
-            "offers": "Offers-news",
+            "offers": "Offers",
             "welcome": "Welkom",
             "gallery": "Gallery",
             "languages": "talen",
@@ -180,7 +266,7 @@
         "ita": {
             "info": "Richiesta info",
             "map": "Cartina",
-            "offers": "Offerte-news",
+            "offers": "Offerte",
             "welcome": "Benvenuti",
             "gallery": "Galleria",
             "languages": "Lingue",
@@ -196,7 +282,7 @@
         "eng": {
             "info": "Information",
             "map": "Map",
-            "offers": "Offers-news",
+            "offers": "Offers",
             "welcome": "Welcome",
             "gallery": "Gallery",
             "languages": "Languages",

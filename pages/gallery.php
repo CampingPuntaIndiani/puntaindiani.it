@@ -15,8 +15,7 @@
       <?=join('<br>',$GLOBALS['dict']->page->{$_SESSION['lang']}->send_photo)?>
       </header>
 
-      <!-- modal-target : modal div -->
-      <section data-toggle="modal-gallery" data-target="#modal-gallery">
+      <section name="gallery">
       <?php
         if($root = opendir($base)):
           while(FALSE !== ($album_link = readdir($root))):
@@ -24,8 +23,9 @@
               // iterate over big to get album structure 
               if(FALSE !== ($album = opendir($base.$album_link.$big))): 
                 $secure_album = htmlspecialchars($album_link, $ENT_HTML5, 'UTF-8');
+                $album_name = str_replace("_", " ", $secure_album)
       ?>
-          <h3><?=str_replace("_", " ", $secure_album)?></h3>
+          <h3><?=$album_name?></h3>
           <ul class="thumbnails">
       <?php
                 $photoes = array();
@@ -37,8 +37,7 @@
                   $secure_photo = htmlspecialchars($photo, $ENT_HTML5, 'UTF-8');
       ?>
             <li class="span2 gallery-ico">
-              <a href="<?=str_replace('+', '%20', $base.urlencode($album_link).$big.urlencode($photo))?>" title="<?=$secure_album.' : '.($c+1).'/'.$tot?>" 
-                 rel="gallery" data-album="<?=$secure_album?>" target="_blank">
+              <a href="<?=str_replace('+', '%20', $base.urlencode($album_link).$big.urlencode($photo))?>" title="<?=$album_name.' : '.($c+1).'/'.$tot?>" target="_blank">
                 <img src="<?=str_replace('+', '%20', $base.urlencode($album_link).$big.urlencode($photo))?>" alt="<?=$secure_photo?>" class="img-rounded img-polaroid">
               </a>
             </li>
@@ -63,17 +62,46 @@
         <center><iframe width="960" height="540" src="http://player.vimeo.com/video/8970989"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><p><a href="http://vimeo.com/8970989">Camping Punta Indiani</a> from <a href="http://vimeo.com/renzomobiel">Renzo</a> on <a href="http://vimeo.com">Vimeo</a>.</p></center>
       </section>
 
-      <!-- modal-gallery is the modal dialog used for the image gallery -->
-      <div id="modal-gallery" class="modal modal-gallery hide fade" tabindex="-1">
-          <div class="modal-header">
-              <a class="close" data-dismiss="modal">&times;</a>
-              <h3 class="modal-title"></h3>
-          </div>
-          <div class="modal-body"><div class="modal-image"></div></div>
-          <div class="modal-footer">
-              <a class="btn btn-info modal-prev pull-left"><i class="icon-arrow-left icon-white"></i>&nbsp;Previous</a>
-              <a class="btn btn-success modal-play modal-slideshow" data-slideshow="3000"><i class="icon-play icon-white"></i>&nbsp;Slideshow</a>
-              <a class="btn modal-download" target="_blank"><i class="icon-download"></i>&nbsp;Download</a>
-              <a class="btn btn-primary modal-next pull-right">Next&nbsp;<i class="icon-arrow-right icon-white"></i></a>
-          </div>
+ 
+      <div id="blueimp-gallery" class="blueimp-gallery">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
       </div>
+
+      <script type="text/javascript" src="/static/js/jquery.blueimp-gallery.min.js"></script>
+      <script type="text/javascript">
+        (function(){
+          (function ($) {
+            $(function(){
+              window.load_css('/static/css/blueimp-gallery.min.css');
+              $('section[name=gallery] a').on('click', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                e.stopPropagation();
+
+                var album = $(this).parents('ul').find('a');
+                var start_at = album.index(this);
+
+                var gallery = blueimp.Gallery(album, {
+                  container: '#blueimp-gallery',
+                  carousel: false,
+                  startSlideshow: true,
+                  closeOnSlideClick: false,
+                  hidePageScrollbars: false, //no bouncing
+                  disableScroll: true,
+                  continuous: true,
+                  fullScreen: false, //no double esc on close
+                  toggleControlsOnReturn: false,
+                });
+                gallery.slide(start_at, 0);
+                gallery.toggleControls();
+              });
+            });
+          })(jQuery);
+        })();
+      </script>       

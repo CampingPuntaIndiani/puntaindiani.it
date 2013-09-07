@@ -32,8 +32,9 @@
       </footer>
     </div>
 
-    <script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/ajax.js"></script>
+
     <script>
       // ajax support
       var start_up = {

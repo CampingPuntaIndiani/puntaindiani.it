@@ -58,7 +58,7 @@ class Utils {
 
         /* method */
         $GLOBALS['ajax'] = ($_SERVER['REQUEST_METHOD'] === "POST" and 
-            isset($_POST['ajax']) and $_POST['ajax'] === 1);
+            isset($_POST['ajax']) and $_POST['ajax'] == 1);
 
         session_commit();
     }
