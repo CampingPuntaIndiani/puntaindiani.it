@@ -2,14 +2,15 @@
   if (!(isset($GLOBALS['valid_req']) and $GLOBALS['valid_req'] === TRUE)) return;
   Utils::load_dict();
 
-  $base = './media/approved/';
-  $ico = '/ico/';
-  $big = '/big/';
+  $srv_base = '/'; 
+  include_once 'libs/db.inc.php';
+  include_once 'libs/media.inc.php';
 
-  $ENT_HTML5 = (16|32); //htmlspecialchars constant
 
-  if (!is_dir($base)) 
-    die("<h3>File system error ... Sorry for the inconvenience</h3>");
+  $link = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die('Error '.mysqli_error($link));
+
+  
+        
 ?>
       <header>
       <?=join('<br>',$GLOBALS['dict']->page->{$_SESSION['lang']}->send_photo)?>
@@ -43,42 +44,39 @@
       
       <section name="gallery">
       <?php
-        if($root = opendir($base)):
-          while(FALSE !== ($album_link = readdir($root))):
-            if($album_link != '.' and $album_link != '..' and is_dir($base.$album_link)):
-              // iterate over big to get album structure 
-              if(FALSE !== ($album = opendir($base.$album_link.$big))): 
-                $secure_album = htmlspecialchars($album_link, $ENT_HTML5, 'UTF-8');
-                $album_name = str_replace("_", " ", $secure_album)
-      ?>
-          <h3><?=$album_name?></h3>
-          <ul class="thumbnails">
-      <?php
-                $photoes = array();
-                while(FALSE !== ($cp = readdir($album)))
-                  if($cp != '.' and $cp != '..' and !is_dir($cp))
-                    $photoes[] = $cp;
-                $tot = count($photoes);
-                foreach($photoes as $c=>$photo):
-                  $secure_photo = htmlspecialchars($photo, $ENT_HTML5, 'UTF-8');
-      ?>
-            <li class="span2 gallery-ico">
-              <a href="<?=str_replace('+', '%20', $base.urlencode($album_link).$big.urlencode($photo))?>" title="<?=$album_name.' : '.($c+1).'/'.$tot?>" target="_blank">
-                <img src="<?=str_replace('+', '%20', $base.urlencode($album_link).$big.urlencode($photo))?>" alt="<?=$secure_photo?>" class="img-rounded img-polaroid">
-              </a>
-            </li>
-      <?php 
-                endforeach; 
-              endif;
-              closedir($album);
+        $query = "SELECT name, file_name, uploader_email, album FROM photoes WHERE authorized=1 ORDER BY album ASC";
+        if ($stmt = $link->prepare($query)) {
+          $stmt->execute();
+          $stmt->bind_result($name, $file_name, $uploader_email, $album);
 
-      ?>
-          </ul>
-      <?php
-            endif;
-          endwhile;// end photo iterating
-        endif;
-        closedir($root);
+          $last_album = FALSE;
+          while ($stmt->fetch()) {
+            if ($album !== $last_album){
+              if ($last_album !== FALSE) {
+                print('</ul>');
+              }
+              $last_album = $album;
+              $album_index = 0;
+              printf('<h3>%s&nbsp;<h3>',$album);
+              print('<ul class="thumbnails">');
+            }
+            print('<li class="span2 gallery-ico">');
+            printf('<a href="%s" data-uploader="%s" data-name="%s" title="%s" target="_blank">',
+              $big_path.$file_name.$big_ext, 
+              $uploader_email,
+              $name,
+              'Camping Punta Indiani-'.ucwords($album).'-'.(++$album_index)
+            );
+            printf('<img src="%s" class="img-rounded img-polaroid" alt="%s">',
+              $ico_path.$file_name.$ico_ext,
+              $name
+            );
+            print('</a></li>');
+          }
+          print('</ul>'); //otherwise last album will be not closed;
+          $stmt->close();
+        }
+        $link->close();
       ?>
       </section>
       <section name="video">
@@ -123,6 +121,12 @@
                   continuous: true,
                   fullScreen: false, //no double esc on close
                   toggleControlsOnReturn: false,
+                  onopen: function () {
+                    $('iframe').hide(); // Fackyou you tube! shit of flash.
+                  },
+                  onclose: function () {
+                    $('iframe').show(); // Fackyou you tube! shit of flash.
+                  }
                 });
                 gallery.slide(start_at, 0);
                 gallery.toggleControls();

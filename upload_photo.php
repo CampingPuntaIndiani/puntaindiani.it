@@ -7,17 +7,22 @@
 // 800x600 gallery
 // 170x125 ico
 
-$srv_base = '/srv/puntaindiani.it/';
+$srv_base = '/srv/puntaindiani.it/'; // /srv/puntaindiani.it/
 
-$db_name = 'gallery';
-$db_user = 'gallery';
-$db_pass = 'gallery';
-$db_host = 'localhost';
+include_once 'libs/db.inc.php';
+include_once 'libs/media.inc.php';
 
-ini_set('post_max_size', '22M'); // max post size
-ini_set('upload_max_filesize', '5M'); // max size per file
-ini_set('max_file_uploads', '4'); // max 4 upload a time
-ini_set('max_input_time', '600'); // max upload time 10 minutes
+
+// TODO: test if aruba allow ini_set
+//ini_set('post_max_size', '22M'); // max post size //!ARUBA: 30M
+//ini_set('upload_max_filesize', '5M'); // max size per file //!ARUBA: 25M
+//ini_set('max_file_uploads', '5'); // max 4 upload a time //!ARUBA 20
+//ini_set('max_input_time', '600'); // max upload time 10 minutes //!ARUBA: 120
+
+// Aruba seams allows ini_set so...
+ini_set("memory_limit", "128M");
+ini_set("max_execution_time", "300");
+$UPLOADS_MAX_FILESIZE = 25 * 1024 * 1024 ;
 
 function get_normalized_FILES () {
     $newfiles = array();
@@ -30,24 +35,32 @@ function get_normalized_FILES () {
 
 include_once('libs/img-resizer.php');
 
-$original_path = $srv_base.'media/original/';
-$big_path = $srv_base.'media/800x600/';
-$big_ext = 'def.png';
-$ico_path = $srv_base.'media/170x125/';
-$ico_ext = 'min.png';
 
-$res = array();
+$uploaded = array(
+    'rejected' => array(),
+    'accepted' => array()
+);
+
+$link = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die('Error '.mysqli_error($link));
 
 foreach (get_normalized_FILES()['photoes'] as $key => $photo) {
-    //TODO: use db to preserve links
+    $ext = strrchr($photo['name'], '.');
+    $ext = strtolower($ext);
+
+    if ((!in_array($ext, array('.jpg', '.jpeg', '.png', '.gif'))) or $photo['size'] > $UPLOADS_MAX_FILESIZE) {
+        $uploaded['rejected'][] = $photo['name'];
+        continue;
+    }
+
     $now = new DateTime('NOW');
     $new_name = md5(($now->format('Y-m-d H:i:s')).(rand(10000,65535)));
 
     // original
-    $ext = strrchr($photo['name'], '.');
-    $ext = strtolower($ext);
     $original = $original_path.$new_name.$ext;
-    move_uploaded_file($photo['tmp_name'], $original);
+    if(!move_uploaded_file($photo['tmp_name'], $original)) {
+        $uploaded['rejected'][] = $photo['name'];
+        continue;
+    }
 
     // 800x600
     $resizer = new resize($original);
@@ -61,37 +74,16 @@ foreach (get_normalized_FILES()['photoes'] as $key => $photo) {
     $ico = $ico_path.$new_name.$ico_ext;
     $resizer->saveImage($ico);
 
-    $res[]= array(
-        'build-time' => $now,
-        'original' => $original,
-        'big' => $big,
-        'ico' => $ico
-    );
+    // update db
+    if ($stmt = $link->prepare("INSERT INTO photoes (name, file_name, uploader_email, authorized, uploaded_datetime, album) VALUES (?,?,?,0,?,?)")) {
+        $stmt->bind_param("sssss", $photo['name'], $new_name, $_POST['email'], $now->format('Y-m-d H:i:s'), strtolower($_POST['album']));
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    $uploaded['accepted'][] = $photo['name'];
 }
-
-// update db
-$link = mysql_connect($db_host, $db_user, $db_pass) or die('Error '.mysqli_error($link));
-if ($stmt = $link->prepare("INSERT INTO photoes (name, file_name, uploader_email, authorized, uploaded_datetime, album) VALUES (?,?,?,?,?,?)")) {
-
-    /* bind parameters for markers */
-    $stmt->bind_param("s", $city);
-
-    /* execute query */
-    $stmt->execute();
-
-    /* bind result variables */
-    $stmt->bind_result($district);
-
-    /* fetch value */
-    $stmt->fetch();
-
-    printf("%s is in district %s\n", $city, $district);
-
-    /* close statement */
-    $stmt->close();
-}
-
 /* close connection */
 $link->close();
-print(json_encode($res));
+print(json_encode($uploaded));
 ?>
