@@ -14,7 +14,33 @@
       <header>
       <?=join('<br>',$GLOBALS['dict']->page->{$_SESSION['lang']}->send_photo)?>
       </header>
+      
+      <br>
 
+      <section name="upload">
+        <header>
+          <p id="upload_errors" class="text-error"></p>
+        </header>
+        <div class="row">
+          <div class="span8">
+            <form class="form-inline" method="POST" enctype="multipart/form-data" action="/upload_photo.php" id="upload_form">
+              <input type="email" name="email" placeholder="you@provider.ext" required>
+              <input type="text" name="album" placeholder="Album name - empty[default]" pattern="[a-zA-Z0-9]+">
+              <button type="button" class="btn btn-success" id="upload_proxy">Select Photoes&nbsp;<i class="icon-search icon-white"></i></button>
+              <button type="submit" class="btn btn-primary" disabled>Upload&nbsp;<i class="icon-upload icon-white"></i></button>
+              <input type="file" id="upload" name="photoes[]" multiple accept="image/*" style="display:none;">
+            </form>
+          </div>
+          <div class="span4 progress progress-striped active">
+            <div id="progress" class="bar"></div>
+          </div>
+        </div>
+        <blockquote id="upload_list">
+        </blockquote>
+      </section>
+      <script type="text/javascript" src="/static/js/jquery.form.js"></script>
+      <script type="text/javascript" src="/static/js/upload-fix.js"></script>
+      
       <section name="gallery">
       <?php
         if($root = opendir($base)):

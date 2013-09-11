@@ -143,7 +143,7 @@
                     if ($from <= $now and $now < $to) {
                       $str = array('<li><a>');
                       array_push($str, '<span class="text-warning"><strong>'.$news->{'pre'}.'</strong></span>&nbsp');
-                      array_push($str, '<span class="text-info"><strong><em>'.$news->{'msg'}->{$_SESSION['lang']}.'</em><strong></span>');
+                      array_push($str, '<span class="text-info"><strong><em>'.$news->{'msg'}->{$_SESSION['lang']}.'</em></strong></span>');
                       array_push($str, '</a></li>');
                       print(''.join($str));
                     }
