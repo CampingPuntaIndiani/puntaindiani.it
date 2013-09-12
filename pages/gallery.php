@@ -103,6 +103,15 @@
           (function ($) {
             $(function(){
               window.load_css('/static/css/blueimp-gallery.min.css');
+              /* flash fix */
+              $('iframe').each(function(){
+                $(this).wrap('<div class="gallery-video-placeholder noise"/>');
+                $(this).parent('div').css({
+                  'width': $(this).width(),
+                  'height': $(this).height()                  
+                });
+              })
+
               $('section[name=gallery] a').on('click', function(e){
                 e.preventDefault();
                 e.stopImmediatePropagation();
@@ -110,6 +119,8 @@
 
                 var album = $(this).parents('ul').find('a');
                 var start_at = album.index(this);
+
+                
 
                 var gallery = blueimp.Gallery(album, {
                   container: '#blueimp-gallery',
@@ -134,4 +145,4 @@
             });
           })(jQuery);
         })();
-      </script>       
+      </script>      

@@ -1,5 +1,5 @@
 <?php
-
+    assert(isset($srv_base));
 
     $original_path = $srv_base.'media/original/';
     $big_path = $srv_base.'media/800x600/';

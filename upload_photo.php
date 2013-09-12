@@ -53,7 +53,7 @@ foreach (get_normalized_FILES()['photoes'] as $key => $photo) {
     }
 
     $now = new DateTime('NOW');
-    $new_name = md5(($now->format('Y-m-d H:i:s')).(rand(10000,65535)));
+    $new_name = md5((microtime()).(rand(10000,65535)));
 
     // original
     $original = $original_path.$new_name.$ext;

@@ -40,8 +40,8 @@ var max_file_uploads = 4;
             $('#upload_errors').text('');
             var error, upload_list;
 
-            if($(this).get(0).files.length > 4) {
-                error = 'You can upload a maximum of 4 photo at a time';
+            if($(this).get(0).files.length > 5) {
+                error = 'You can upload a maximum of 5 photo at a time';
             } else {
                 upload_list = [];
                 $.each($(this).get(0).files, function(){
