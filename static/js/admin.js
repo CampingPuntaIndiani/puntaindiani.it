@@ -23,15 +23,42 @@
       gallery.toggleControls();
     });
   });
-  $('input').on('change', function() {
-    $(this).data('init', $(this).val());
-    $(this).data('changed', 1);
+  $('button[data-action=save]').on('click', function () {
+    var update_dict = {};
+    $('.make-switch').each(function(){
+      var e = $(this), i = e.find('input');
+      if (e.bootstrapSwitch('status') !== (i.attr('data-init') == 1)) {
+        update_dict[parseInt(i.attr('name'))] = (e.bootstrapSwitch('status') ? 1 : 0);
+      }
+    });
+    
+    $.ajax({
+      url: '/admin/index.php',
+      method: 'POST',
+      data: $.extend(update_dict, {'update':1}),
+      context: update_dict,
+      success: function(){
+        console.log('Yes!');
+        $.each(this, function(i,e) {
+          $('input[name='+i+']').attr('data-init', e);
+        });
+      },
+      error: function(){
+        console.log('Error!');
+      }
+    });
   });
-  $('form').on('submit', function(e){
-    $(this).find('[data-changed=1]').filter(function(){
-      return $(this).data('init') == $(this).val();
-    }).data('changed', 0);
-    $(this).find('input:not([data-changed=1])').removeAttr('name');
-    return $(this).find('input:not([data-changed=1])').length != 0;
-  })
+
+  $('button[data-action=reset]').on('click', function(){
+    $('.make-switch').each(function(){
+      var e = $(this), i = e.find('input');
+      e.bootstrapSwitch('setState', i.attr('data-init') == 1);
+    });
+  });
+
+  $('button[data-action=show], button[data-action=hide]').on('click', function(){
+    var b = $(this);
+    console.log(b.parent('*').next('ul'));
+    b.parent('*').next('ul').find('div.make-switch').bootstrapSwitch('setState', b.attr('data-action') == 'show');
+  });
 })(jQuery);

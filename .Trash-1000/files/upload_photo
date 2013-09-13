@@ -1,5 +1,0 @@
-<?php
-  if (!(isset($GLOBALS['valid_req']) and $GLOBALS['valid_req'] === TRUE)) return;
-  Utils::load_dict();
-
-?>
