@@ -26,7 +26,7 @@
           <div class="span8">
             <form class="form-inline" method="POST" enctype="multipart/form-data" action="/upload_photo.php" id="upload_form">
               <input type="email" name="email" placeholder="you@provider.ext" required>
-              <input type="text" name="album" placeholder="Album name - empty[default]" pattern="[a-zA-Z0-9]+">
+              <input type="text" name="album" placeholder="Album name - empty[default]" pattern="[a-zA-Z0-9 -]{2,}">
               <button type="button" class="btn btn-success" id="upload_proxy">Select Photoes&nbsp;<i class="icon-search icon-white"></i></button>
               <button type="submit" class="btn btn-primary" disabled>Upload&nbsp;<i class="icon-upload icon-white"></i></button>
               <input type="file" id="upload" name="photoes[]" multiple accept="image/*" style="display:none;">

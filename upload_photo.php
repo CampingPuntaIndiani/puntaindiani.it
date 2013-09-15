@@ -57,8 +57,9 @@ foreach (get_normalized_FILES()['photoes'] as $key => $photo) {
 
     // original
     $original = $original_path.$new_name.$ext;
-    if(!move_uploaded_file($photo['tmp_name'], $original)) {
+    if(!move_uploaded_file($photo['tmp_name'], $original) or strpos(mime_content_type($original), "image/") !== 0) {
         $uploaded['rejected'][] = $photo['name'];
+        unlink($original);
         continue;
     }
 
