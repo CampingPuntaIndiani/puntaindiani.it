@@ -31,49 +31,11 @@ li a{
   opacity: 1;
 }
 
-/* Effect 1: Brackets */
-.navbar .nav>li>a:not(.brand):not(.dropdown-toggle):not(.logo)::before,
-.navbar .nav>li>a:not(.brand):not(.dropdown-toggle):not(.logo)::after {
-  display: inline-block;
-  opacity: 0;
-  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
-  transition: transform 0.3s, opacity 0.2s;
-}
-
-.navbar .nav>li>a:not(.brand):not(.dropdown-toggle):not(.logo)::before {
-  content: '[';
-  /*color: #ccc;*/
-  color: rgb(166, 102, 17);
-  -webkit-transform: translateX(20px);
-  -moz-transform: translateX(20px);
-  transform: translateX(20px);
-}
-
-.navbar .nav>li>a:not(.brand):not(.dropdown-toggle):not(.logo)::after {
-  content: ']';
-  /*color: #ccc; */
-  color: rgb(166, 102, 17);
-  -webkit-transform: translateX(-20px);
-  -moz-transform: translateX(-20px);
-  transform: translateX(-20px);
-}
-
-.navbar .nav>li>a:not(.brand):not(.dropdown-toggle):not(.logo):hover::before,
-.navbar .nav>li>a:not(.brand):not(.dropdown-toggle):not(.logo):hover::after,
-.navbar .nav>li>a:not(.brand):not(.dropdown-toggle):not(.logo):focus::before,
-.navbar .nav>li>a:not(.brand):not(.dropdown-toggle):not(.logo):focus::after {
-  opacity: 1;
-  -webkit-transform: translateX(0px);
-  -moz-transform: translateX(0px);
-  transform: translateX(0px);
-}
 .navbar .nav>li:not(.active)>a {text-shadow: 1px 0 2px #bbb;}
 .navbar .nav>li.active>a {text-shadow: 1px 0px 2px #333;}
 
 .navbar .nav>li:not(.active)>a:not(.brand) {
   color:#fff;
-  text-shadow: 1px 0 2px #0088cc;
 }
 
 .navbar .nav>li>a:not(.brand){
@@ -83,7 +45,6 @@ li a{
 
 .navbar .nav>li>a:not(.brand):hover {
   color:#3a87ad;
-  text-shadow: 1px 0px 2px #aaa;
 }
 
 .navbar .nav>li>a.brand:hover {

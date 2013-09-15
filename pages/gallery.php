@@ -82,8 +82,8 @@
       <section name="video">
         <h3>Videos</h3>
         <!-- bad practices ... bad pratices every where ;) -->
-        <center><iframe width="960" height="540" src="http://www.youtube.com/embed/PqUCQyr6FtE" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowfullscreen></iframe><p>Video - J. Brouwers Production - Thanks again </p></center>
-        <center><iframe width="960" height="540" src="http://player.vimeo.com/video/8970989"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><p><a href="http://vimeo.com/8970989">Camping Punta Indiani</a> from <a href="http://vimeo.com/renzomobiel">Renzo</a> on <a href="http://vimeo.com">Vimeo</a>.</p></center>
+        <center><iframe width="960" height="540" src="//www.youtube.com/embed/PqUCQyr6FtE" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowfullscreen></iframe><p>Video - J. Brouwers Production - Thanks again </p></center>
+        <center><iframe width="960" height="540" src="//player.vimeo.com/video/8970989"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><p><a href="http://vimeo.com/8970989">Camping Punta Indiani</a> from <a href="http://vimeo.com/renzomobiel">Renzo</a> on <a href="http://vimeo.com">Vimeo</a>.</p></center>
       </section>
 
  
