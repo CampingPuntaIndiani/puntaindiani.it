@@ -239,3 +239,18 @@ form label.control-label, form button, form a {text-transform: capitalize;}
   font-size: 20px;
   vertical-align: middle;
 }
+
+/* booking */
+
+textarea {
+  resize: none;
+  height: 200px;
+}
+
+fieldset {
+  text-align: center;
+}
+
+option.zone_A {color: #b94a48;}
+option.zone_B {color: #468847;}
+option.zone_C {color: #333;}

@@ -3,7 +3,7 @@
 # MB : Curl lib
 
 class MBCurl {
-    public static function post($url, $data)
+    public static function post($url, $data=array())
     {
         # url-ify & secure the data [for the POST action]
         $data_string='';

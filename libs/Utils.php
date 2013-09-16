@@ -6,7 +6,7 @@
 
 class Utils {
 
-    public static function load_json($uri) {
+    public static function &load_json($uri) {
         $content = self::load_file($uri);
         $obj = json_decode($content);
         if (json_last_error() !== JSON_ERROR_NONE)
@@ -14,11 +14,21 @@ class Utils {
         return $obj;
     }
 
-    public static function load_file($uri) {
+
+
+    public static function &load_file($uri) {
         $content=file_get_contents($uri); 
         if ($content === FALSE)
             throw new Exception("Error loading the file", 1);
         return $content;
+    }
+
+    public static function &load_remote_json($url) {
+        $json =  json_decode(MBCurl::post($url));
+        if (json_last_error() !== JSON_ERROR_NONE)
+            throw new Exception("Error parsing json", json_last_error());
+        return $json;
+
     }
 
     // Load config - set session vars
