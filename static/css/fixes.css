@@ -245,12 +245,20 @@ form label.control-label, form button, form a {text-transform: capitalize;}
 textarea {
   resize: none;
   height: 200px;
+  width: 100%;
 }
 
-fieldset {
-  text-align: center;
-}
+fieldset {text-align: center; }
 
 option.zone_A {color: #b94a48;}
 option.zone_B {color: #468847;}
 option.zone_C {color: #333;}
+
+footer.actions{
+  margin-top: 10px;
+  border: 0;
+  border-top: 1px;
+  border-color: #ccc;
+  padding-top: 5px
+}
+

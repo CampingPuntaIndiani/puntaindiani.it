@@ -1,10 +1,33 @@
 <?php
-  if (!(isset($GLOBALS['valid_req']) and $GLOBALS['valid_req'] === TRUE)) return;
-  // TODO: try catch for main srv down
-  include_once('libs/MBCurl.php');
-  //$options = $Utils::load_remote_json('https://backend.martin-dev.tk/backend/options/');
-  $options = Utils::load_remote_json('https://127.0.0.1/backend/options/');
+    if (!(isset($GLOBALS['valid_req']) and $GLOBALS['valid_req'] === TRUE)) return;
+    // TODO: try catch for main srv down
+    include_once('libs/MBCurl.php');
+    include_once('libs/Mail.php');
 
+    try {
+        //$options = $Utils::load_remote_json('https://backend.martin-dev.tk/backend/options/');
+        $options = Utils::load_remote_json('https://127.0.0.1/backend/optionsss/');
+    } catch (Exception $e){
+        $error = TRUE;
+        $admin_mail =  new Mail($e, "martin.brugnara@gmail.com", 'PHP@puntaindiana.it', 'connection error');
+        if(! $admin_mail->send() ) {
+            print("Unable to send mail to the admin.<br>");
+        }
+    }
+
+    if(isset($error)):
+?>
+    <div class="well">
+        <h4><span class="text-error">Looks like something went wrong!</span></h4>
+        <h5>
+            We track these errors automatically, but if the problem persists feel free to contact us.</br>
+            In the meantime, try refreshing.
+        <h5>
+        <center><em>Please try againg later.<em></center>
+    </div>
+<?php
+        return;
+    endif;
 ?>
 
 <form class="form-horizontal" action="/?page=booking" method="POST" id="booking" autocomplete="on">
@@ -15,25 +38,25 @@
             <div class="control-group">
                 <label class="control-label" for="surname">Surname</label>
                 <div class="controls">
-                    <input type="text" name="surname" placeholder="Smith" class="input-xlarge" pattern="[a-zA-Z ]{2,}"> 
+                    <input type="text" name="surname" placeholder="Smith" class="span3" pattern="[a-zA-Z ]{2,255}" required /> 
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="name">Name</label>
                 <div class="controls">
-                    <input type="text" name="name" placeholder="Alice" class="input-xlarge" pattern="[a-zA-Z ]{2,}">  
+                    <input type="text" name="name" placeholder="Alice" class="span3" pattern="[a-zA-Z ]{2,255}" required />  
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="birthdate">Birthdate</label>
                 <div class="controls">
-                    <input type="date" max=" <?=date('Y-m-d', strtotime('-18 years')) ?>" name="birthdate"  class="input-xlarge"> 
+                    <input type="date" max=" <?=date('Y-m-d', strtotime('-18 years')) ?>" name="birthdate"  class="span3" placeholde="yyy-mm-dd" required /> 
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="citizenship">Citizenship</label>
                 <div class="controls">
-                    <select name="citizenship" class="input-xlarge"> 
+                    <select name="citizenship" class="span3" required> 
                     <?php 
                         foreach ($options->{'citizenship'} as $id => $name) {
                             printf('<option value="%s">%s</option>', $id, $name);
@@ -45,11 +68,11 @@
             <div class="control-group">
                 <label class="control-label" for="equipment">Equipment</label>
                 <div class="controls">
-                    <select name="equipment" class="input-xlarge"> 
+                    <select name="equipment" class="span3" required> 
                         <optgroup label="Caravan">
                             <option value="s_caravan">caravan small</option>
-                            <option value="m_caravan">'- medium</option>
-                            <option value="l_caravan">\- large</option>
+                            <option value="m_caravan">caravan medium</option>
+                            <option value="l_caravan">caravan large</option>
                         </optgrou>
 
                         <optgroup label="Camper">
@@ -73,7 +96,7 @@
             <div class="control-group">
                 <label class="control-label" for="email">Email</label>
                 <div class="controls">
-                    <input type="email" name="email" placeholder="you@provider.domain" class="input-xlarge"> 
+                    <input type="email" name="email" placeholder="you@provider.domain" class="span3" required /> 
                 </div>
             </div>
         </fieldset>
@@ -83,19 +106,19 @@
             <div class="control-group">
                 <label class="control-label" for="arrival">Arrival</label>
                 <div class="controls">
-                    <input type="date" min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="arrival"  class="input-xlarge"> 
+                    <input type="date" min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="arrival"  placeholder="201" class="span3" required /> 
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="departure">Departure</label>
                 <div class="controls">
-                    <input type="date" min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="departure"  class="input-xlarge"> 
+                    <input type="date" min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="departure"  class="span3" required /> 
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="pitch">Fav. Pitch</label>
                 <div class="controls">
-                    <select name="pitch" class="input-xlarge" size="1"> 
+                    <select name="pitch" class="span3" size="1" requierd> 
                     <?php 
                         $last_zone=null;
                         foreach ($options->{'pitch'} as $id => $desc) {
@@ -124,7 +147,7 @@
             <div class="control-group">
                 <label class="control-label" for="adults">Adults</label>
                 <div class="controls">
-                    <select name="adults" class="input-xlarge"> 
+                    <select name="adults" class="span3" required> 
                     <?php 
                         foreach (range(1,10) as $_ => $v) {
                             printf('<option value="%s">%s</option>', $v, $v);
@@ -136,7 +159,7 @@
             <div class="control-group">
                 <label class="control-label" for="children">Children</label>
                 <div class="controls">
-                    <select name="children" class="input-xlarge"> 
+                    <select name="children" class="span3" required> 
                     <?php 
                         foreach (range(0,10) as $_ => $v) {
                             printf('<option value="%s">%s</option>', $v, $v);
@@ -148,15 +171,25 @@
             <div class="control-group">
                 <label class="control-label" for="email_again">Email againg</label>
                 <div class="controls">
-                    <input type="email" name="email_again" placeholder="you@provider.domain" class="input-xlarge">
+                    <input type="email" name="email_again" placeholder="you@provider.domain" class="span3" required />
                 </div>
             </div>
         </fieldset>
     </div>
-
-    <div class="span1"><!-- padding, offset1 does not work (due to use of section instead of div?)... --></div>
-    <textarea class="span10" name="note" wrap="soft" placeholder="Write here your note"></textarea>
-    <div class="span1"><!-- padding, offset1 does not work... --></div>
+    <fieldset>
+        <legend>Note</legend>
+        <div class="row">
+            <div class="offset1 span10">
+                <textarea name="note" wrap="soft" placeholder="Write here your note" maxlength="500"></textarea>
+            </div>
+        </div>
+    </fieldset>
+    <footer class="actions row">
+        <center>
+        <button type="reset" class="btn btn-inverse span6">Undo</button>
+        <button type="submit" class="btn btn-success span6">Reserve!</button>
+        </center>
+    </footer>
 </form>
 
     <script type="text/javascript" src="/static/js/booking.js"></script>
