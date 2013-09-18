@@ -67,7 +67,7 @@
             <div class="control-group <?= isset($form_errors['birthdate']) ? error : '' ?>">
                 <label class="control-label" for="birthdate">Birthdate</label>
                 <div class="controls">
-                    <input type="date" max=" <?=date('Y-m-d', strtotime('-18 years')) ?>" name="birthdate"  class="span3" placeholde="yyy-mm-dd" required value="<?=array_get($form_values, 'birthdate', '')?>" /> 
+                    <input type="date" max="<?=date('Y-m-d', strtotime('-18 years')) ?>" name="birthdate"  class="span3" placeholde="yyy-mm-dd" required value="<?=array_get($form_values, 'birthdate', '')?>" /> 
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['citizenship']) ? error : '' ?>">
@@ -91,25 +91,25 @@
                     <?php /* TODO: find a way to loop and restore $form_value*/ ?>
                     <select name="equipment" class="span3" required value="<?=array_get($form_values, 'equipment', '')?>"> 
                         <optgroup label="Caravan">
-                            <option value="s_caravan">caravan small</option>
-                            <option value="m_caravan">caravan medium</option>
-                            <option value="l_caravan">caravan large</option>
+                            <option value="s_caravan" <?=array_get($form_values, 'equipment', '') == 's_caravan' ? 'selected' : ''?>>caravan small</option>
+                            <option value="m_caravan" <?=array_get($form_values, 'equipment', '') == 'm_caravan' ? 'selected' : ''?>>caravan medium</option>
+                            <option value="l_caravan" <?=array_get($form_values, 'equipment', '') == 'l_caravan' ? 'selected' : ''?>>caravan large</option>
                         </optgrou>
 
                         <optgroup label="Camper">
-                            <option value="s_camper">camper small</option>
-                            <option value="m_camper">camper medium</option>
-                            <option value="l_camper">camper large</option>
+                            <option value="s_camper" <?=array_get($form_values, 'equipment', '') == 's_camper' ? 'selected' : ''?>>camper small</option>
+                            <option value="m_camper" <?=array_get($form_values, 'equipment', '') == 'm_camper' ? 'selected' : ''?>>camper medium</option>
+                            <option value="l_camper" <?=array_get($form_values, 'equipment', '') == 'l_camper' ? 'selected' : ''?>>camper large</option>
                         </optgrou>
 
                         <optgroup label="Tent">
-                            <option value="s_tent">tent small</option>
-                            <option value="m_tent">tent medium</option>
-                            <option value="l_tent">tent large</option>
+                            <option value="s_tent" <?=array_get($form_values, 'equipment', '') == 's_tent' ? 'selected' : ''?>>tent small</option>
+                            <option value="m_tent" <?=array_get($form_values, 'equipment', '') == 'm_tent' ? 'selected' : ''?>>tent medium</option>
+                            <option value="l_tent" <?=array_get($form_values, 'equipment', '') == 'l_tent' ? 'selected' : ''?>>tent large</option>
                         </optgrou>
 
                         <optgroup label="Other">
-                            <option value="other">other - specify in Note</option>
+                            <option value="other" <?=array_get($form_values, 'equipment', '') == 'other' ? 'selected' : ''?>>other - specify in Note</option>
                         </optgeoup>
                     </select>
                 </div>

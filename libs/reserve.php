@@ -3,12 +3,45 @@
     include_once('libs/MBCurl.php');
     include_once('libs/Mail.php');
 
+    function cleanInput($input) {
+ 
+        $search = array(
+            '@<script[^>]*?>.*?</script>@si',   // Strip out javascript
+            '@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
+            '@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
+            '@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
+        );
+     
+        $output = preg_replace($search, '', $input);
+        return $output;
+    }
+
+    function sanitize($input) {
+        if (is_array($input)) {
+            foreach($input as $var=>$val) {
+                $output[$var] = sanitize($val);
+            }
+        }
+        else {
+            if (get_magic_quotes_gpc()) {
+                $input = stripslashes($input);
+            }
+            $input  = cleanInput($input);
+            $output = mysql_real_escape_string($input);
+        }
+        return $output;
+    }
+
     if ($_SERVER["REQUEST_METHOD"] != "POST")
         return;
 
+    //  Basic sanitization
+    $_POST = sanitize($_POST);
+
+
+    //  Per field sanitization and validation
     $form_errors = array();
     $form_values = array();
-
 
     if (array_get($_POST, 'email', '') !== array_get($_POST, 'email_again', '')) {
         $form_errors['email_again'] = 'Emails have to be the same';
@@ -78,10 +111,33 @@
         $form_errors['children'] = 'Not valid';
     }
 
-    /* TODO: Write validation for equipment */
+    list($equipment_size, $equipment_type, $_) = split('_', array_get($_POST, 'equipment', ''));
 
-    /* TODO: sanitize, validate note */
-    /* TODO: extend date with addon data */
+    print(array_get($_POST, 'equipment', ''));
+    print($equipment_type);
+    print($equipment_size);
+
+    if (!((in_array($equipment_type , array('caravan', 'camper', 'tent')) and in_array($equipment_size, array('s', 'm', 'l'))) or in_array($equipment_type, array('other')))) {
+        $form_errors['equipment'] = 'Not valid';
+    } else {
+        $form_values['equipment'] = array_get($_POST, 'equipment', '');
+    }
+
+    if (count($form_errors) === 0) {
+        $form_values['note'] = " \r\n".join(array(
+            sprintf('Equipment %s', $form_values['equipment']),
+            sprintf('People %s + %s', $form_values['adults'], $form_values['children']),
+            array_get($_POST, 'note', '')
+        ));
+
+        #TODO: SEND TO BACKEND.
+
+        #return TRUE on success
+        #return FALSE on error [and print some kinde of error]
+
+    } else {
+        $form_values['note'] = array_get($_POST, 'note', '');
+    }
 
     /* TODO: Send to backend and parse answer */
 
