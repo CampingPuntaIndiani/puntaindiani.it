@@ -1,6 +1,6 @@
 <?php
     if (!(isset($GLOBALS['valid_req']) and $GLOBALS['valid_req'] === TRUE)) return;
-    // TODO: try catch for main srv down
+
     include_once('libs/MBCurl.php');
     include_once('libs/Mail.php');
 
@@ -11,36 +11,71 @@
     $form_errors = array();
     $form_values = array();
 
-    if (isset($_POST['reserve'])) {
-        if (include_once('libs/reserve.php')){
-            return; // All went good.
-        }// otherwise the errors messages will be rendered
+    $old_booking_code = array_get($_SESSION, 'booking_code', null);
+    $booking_code = md5((microtime()).(rand(10000,65535)));
+
+    $_SESSION['booking_code'] = $booking_code;
+
+    session_commit();
+
+
+    if (isset($_POST['booking_code']) and $old_booking_code !== null) {
+        if($old_booking_code == $_POST['booking_code']) { // Valid request
+            $booking_status = include('libs/reserve.php');
+        } else { // Unvalid Request (code expired or not set)
+            printf("<script>(function(){window.location.replace('/');})()</script>"); // (Clean browser POST history)
+            printf('<a href="/" target="_self" class="span12 btn btn-warning">Plaese click here to continue</a>'); // No JS fallback
+            return;
+        }
     }
-
-    var_dump($form_values);
-    var_dump($form_errors);
-
 
     try {
         //$options = $Utils::load_remote_json('https://backend.martin-dev.tk/backend/options/');
         $options = Utils::load_remote_json('https://127.0.0.1/backend/options/');
     } catch (Exception $e){
-        $error = TRUE;
+        $backend_error = TRUE;
         $admin_mail =  new Mail($e, "martin.brugnara@gmail.com", 'PHP@puntaindiana.it', 'connection error');
         if(! $admin_mail->send() ) {
             print("Unable to send mail to the admin.<br>");
         }
     }
 
-    if(isset($error)):
+    if(isset($backend_error)):
 ?>
     <div class="well">
         <h4><span class="text-error">Looks like something went wrong!</span></h4>
         <h5>
             We track these errors automatically, but if the problem persists feel free to contact us.</br>
             In the meantime, try refreshing.
-        <h5>
+        </h5>
         <center><em>Please try againg later.<em></center>
+    </div>
+<?php
+        return;
+    endif;
+
+    if(isset($booking_status) and $booking_status !== TRUE and $booking_status !== FALSE):
+?>
+    <div class="well">
+        <h4><span class="text-error">Looks like something went wrong  with your Reservation!</span></h4>
+        <h5>
+            We track these errors automatically, but if the problem persists feel free to contact us.</br>
+        </h5>
+        <center><em>Please try againg later.<em></center>
+    </div>
+<?php
+        return;
+    endif;
+
+    if(isset($booking_status) and $booking_status === TRUE):
+?>
+    <div class="well">
+        <h4><span class="text-success">Reservation completed successfully!</span></h4>
+        <h5>
+            We have sent you an email with your reservation data.</br>
+            If it's not in your incoming mail please check the spam folder.
+        </h5>
+        <center><em>See you in summer!.<em></center>
     </div>
 <?php
         return;
@@ -48,7 +83,7 @@
 ?>
 
 <form class="form-horizontal" action="/?page=booking" method="POST" id="booking" autocomplete="on">
-    <input type="hidden" name="reserve" value="1"></input>
+    <input type="hidden" name="booking_code" value="<?=$booking_code?>"></input>
     <div class="row">
         <fieldset class="span6">
             <legend>Personal Information</legend>
@@ -221,4 +256,3 @@
 </form>
 
     <script type="text/javascript" src="/static/js/booking.js"></script>
-

@@ -1,7 +1,9 @@
 <?php
-    /* They should yet be laoded*/
     include_once('libs/MBCurl.php');
     include_once('libs/Mail.php');
+
+    if ($_SERVER["REQUEST_METHOD"] != "POST")
+        return;
 
     function cleanInput($input) {
  
@@ -32,12 +34,8 @@
         return $output;
     }
 
-    if ($_SERVER["REQUEST_METHOD"] != "POST")
-        return;
-
     //  Basic sanitization
     $_POST = sanitize($_POST);
-
 
     //  Per field sanitization and validation
     $form_errors = array();
@@ -111,11 +109,7 @@
         $form_errors['children'] = 'Not valid';
     }
 
-    list($equipment_size, $equipment_type, $_) = split('_', array_get($_POST, 'equipment', ''));
-
-    print(array_get($_POST, 'equipment', ''));
-    print($equipment_type);
-    print($equipment_size);
+    list($equipment_size, $equipment_type) = split('_', array_get($_POST, 'equipment', ''));
 
     if (!((in_array($equipment_type , array('caravan', 'camper', 'tent')) and in_array($equipment_size, array('s', 'm', 'l'))) or in_array($equipment_type, array('other')))) {
         $form_errors['equipment'] = 'Not valid';
@@ -124,22 +118,42 @@
     }
 
     if (count($form_errors) === 0) {
-        $form_values['note'] = " \r\n".join(array(
+        $form_values['note'] = join(array(
             sprintf('Equipment %s', $form_values['equipment']),
             sprintf('People %s + %s', $form_values['adults'], $form_values['children']),
             array_get($_POST, 'note', '')
-        ));
+        ), " \r\n");
 
-        #TODO: SEND TO BACKEND.
+        try {
+            $backend_post = array(
+                'surname' => $form_values['surname'],
+                'name' => $form_values['name'],
+                'email' => $form_values['email'],
+                'citizenship' => $form_values['citizenship'],
 
-        #return TRUE on success
-        #return FALSE on error [and print some kinde of error]
+                'birthdate' => $form_values['birthdate'],
+                'ip' => $_SERVER['REMOTE_ADDR'],
+                'note' => $form_values['note'],
+                'pitch' => $form_values['pitch'],
 
-    } else {
-        $form_values['note'] = array_get($_POST, 'note', '');
+                'arrival' => $form_values['arrival'],
+                'departure' => $form_values['departure'],
+            );
+            $backend_response = Utils::load_remote_json('https://127.0.0.1/backend/reserve/', $backend_post);
+        } catch(Exception $ex) {
+            return sprintf("500 Internal Server Error: %s \r\n", $ex);
+        }
+
+        /* this sould never happend but... double validation is better the single */
+        if ($backend_response->{'success'} == TRUE) {
+            return TRUE;
+        } else {
+            foreach ($backend_response->{'errors'} as $filed => $error) {
+                $form_errors[$field] = $error;
+            }
+        }
     }
 
-    /* TODO: Send to backend and parse answer */
-
+    $form_values['note'] = array_get($_POST, 'note', '');
     return FALSE; 
 ?>

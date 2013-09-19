@@ -23,8 +23,8 @@ class Utils {
         return $content;
     }
 
-    public static function &load_remote_json($url) {
-        $json =  json_decode(MBCurl::post($url));
+    public static function &load_remote_json($url, $params=array()) {
+        $json =  json_decode(MBCurl::post($url, $params));
         if (json_last_error() !== JSON_ERROR_NONE)
             throw new Exception("Error parsing json", json_last_error());
         return $json;
@@ -69,8 +69,6 @@ class Utils {
         /* method */
         $GLOBALS['ajax'] = ($_SERVER['REQUEST_METHOD'] === "POST" and 
             isset($_POST['ajax']) and $_POST['ajax'] == 1);
-
-        session_commit();
     }
 
     public static function load_dict() {

@@ -14,20 +14,39 @@ class MBCurl {
         # open connection
         $ch = curl_init();
 
-        #set the url, number of POST vars, POST data
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, count($data));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $options = array(
+            CURLOPT_URL => $url,
+            CURLOPT_POST => count($data_string),
+            CURLOPT_POSTFIELDS => $data_string,
+            CURLOPT_RETURNTRANSFER => true,     // return web page
+            CURLOPT_HEADER         => false,    // don't return headers
+            CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+            CURLOPT_ENCODING       => "",       // handle all encodings
+            CURLOPT_USERAGENT      => "spider", // who am i
+            CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+            CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
+            CURLOPT_TIMEOUT        => 120,      // timeout on response
+            CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+            CURLOPT_SSL_VERIFYPEER => false
+        );
+
+        curl_setopt_array($ch, $options);
 
         # execute post
-        $result = curl_exec($ch);
+        $content = curl_exec($ch);
+        
+        $err = curl_errno($ch);
+        $errmsg  = curl_error( $ch );
+        $header  = curl_getinfo( $ch );
 
         #close connection
         curl_close($ch);
 
-        return $result;
+        if ($err) {
+            throw new Exception($errmsg, $err);
+        }
+
+        return $content;
     }
 
     public static function get($url)
