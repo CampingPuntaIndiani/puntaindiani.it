@@ -1,3 +1,4 @@
+DROP SCHEMA `gallery`;
 CREATE DATABASE  IF NOT EXISTS `gallery` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `gallery`;
 -- MySQL dump 10.13  Distrib 5.5.31, for debian-linux-gnu (x86_64)

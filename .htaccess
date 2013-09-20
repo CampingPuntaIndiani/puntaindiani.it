@@ -1,0 +1,5 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteRule ^(libs/|media/original/|pages/|texts/|\.git) - [F,L,NC] # do no serve file in this dirs
+RewriteRule ^(.*)\.(json|sql|txt|md)$ - [F,L,NC] # do not serve .json files
