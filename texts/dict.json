@@ -28,74 +28,14 @@
         },
         {
             "active" : true,
-            "from" : "2013-08-24",
-            "to" : "2013-10-1",
-            "pre" : "26-08-2013",
+            "from" : "",
+            "to" : "",
+            "pre" : "Gallery",
             "msg": {
-                "eng" : "low season",
-                "ned" : "laagseizoen",
-                "ger" : "nebensaison",
-                "ita" : "bassa stagione"
-            }
-        },
-        {
-            "active" : true,
-            "from" : "2013-08-24",
-            "to" : "2013-10-1",
-            "pre" : "26-08-2013",
-            "msg": {
-                "eng" : "low season",
-                "ned" : "laagseizoen",
-                "ger" : "nebensaison",
-                "ita" : "bassa stagione"
-            }
-        },
-        {
-            "active" : true,
-            "from" : "2013-08-24",
-            "to" : "2013-10-1",
-            "pre" : "26-08-2013",
-            "msg": {
-                "eng" : "low season",
-                "ned" : "laagseizoen",
-                "ger" : "nebensaison",
-                "ita" : "bassa stagione"
-            }
-        },
-        {
-            "active" : true,
-            "from" : "2013-08-24",
-            "to" : "2013-10-1",
-            "pre" : "26-08-2013",
-            "msg": {
-                "eng" : "low season",
-                "ned" : "laagseizoen",
-                "ger" : "nebensaison",
-                "ita" : "bassa stagione"
-            }
-        },
-        {
-            "active" : true,
-            "from" : "2013-08-24",
-            "to" : "2013-10-1",
-            "pre" : "26-08-2013",
-            "msg": {
-                "eng" : "low season",
-                "ned" : "laagseizoen",
-                "ger" : "nebensaison",
-                "ita" : "bassa stagione"
-            }
-        },
-        {
-            "active" : true,
-            "from" : "2013-08-24",
-            "to" : "2013-10-1",
-            "pre" : "26-08-2013",
-            "msg": {
-                "eng" : "low season",
-                "ned" : "laagseizoen",
-                "ger" : "nebensaison",
-                "ita" : "bassa stagione"
+                "eng" : "upload your photoes =)",
+                "ned" : "upload uw foto's",
+                "ger" : "laden Sie Ihre Fotos",
+                "ita" : "caricate le vostre foto =)"
             }
         }
     ],

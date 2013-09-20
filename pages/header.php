@@ -140,7 +140,7 @@
                   if ($news->{'active'}) {
                     $from = DateTime::createFromFormat('Y-m-d', $news->{'from'});
                     $to = DateTime::createFromFormat('Y-m-d', $news->{'to'});
-                    if ($from <= $now and $now < $to) {
+                    if ($from === FALSE or ($from <= $now and $now < $to)) {
                       $str = array('<li><a>');
                       array_push($str, '<span class="text-warning"><strong>'.$news->{'pre'}.'</strong></span>&nbsp');
                       array_push($str, '<span class="text-info"><strong><em>'.$news->{'msg'}->{$_SESSION['lang']}.'</em></strong></span>');
