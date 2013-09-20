@@ -1,6 +1,8 @@
 <?php
     if (!(isset($GLOBALS['valid_req']) and $GLOBALS['valid_req'] === TRUE)) return;
 
+    Utils::load_dict();
+
     include_once('libs/MBCurl.php');
     include_once('libs/Mail.php');
 
@@ -48,7 +50,7 @@
             We track these errors automatically, but if the problem persists feel free to contact us.</br>
             In the meantime, try refreshing.
         </h5>
-        <center><em>Please try againg later.<em></center>
+        <center><em>Please try againg later.</em></center>
     </div>
 <?php
         return;
@@ -61,7 +63,7 @@
         <h5>
             We track these errors automatically, but if the problem persists feel free to contact us.</br>
         </h5>
-        <center><em>Please try againg later.<em></center>
+        <center><em>Please try againg later.</em></center>
     </div>
 <?php
         return;
@@ -75,12 +77,17 @@
             We have sent you an email with your reservation data.</br>
             If it's not in your incoming mail please check the spam folder.
         </h5>
-        <center><em>See you in summer!.<em></center>
+        <center><em>See you in summer!.</em></center>
     </div>
 <?php
         return;
     endif;
 ?>
+
+<blockquote>
+    <h5><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->TeC_label?></h5>
+    <?=join($GLOBALS['dict']->page->{$_SESSION['lang']}->booking_disclaimer, '<br>')?>
+</blockquote>
 
 <form class="form-horizontal" action="/?page=booking" method="POST" id="booking" autocomplete="on">
     <input type="hidden" name="booking_code" value="<?=$booking_code?>"></input>
@@ -88,25 +95,25 @@
         <fieldset class="span6">
             <legend>Personal Information</legend>
             <div class="control-group <?= isset($form_errors['surname']) ? error : '' ?>">
-                <label class="control-label" for="surname">Surname</label>
+            <label class="control-label" for="surname"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->surname?></label>
                 <div class="controls">
                     <input type="text" name="surname" placeholder="Smith" class="span3" pattern="[a-zA-Z ]{2,255}" required value="<?=array_get($form_values, 'surname', '')?>" /> 
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['name']) ? error : '' ?>">
-                <label class="control-label" for="name">Name</label>
+                <label class="control-label" for="name"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->name?></label>
                 <div class="controls">
                     <input type="text" name="name" placeholder="Alice" class="span3" pattern="[a-zA-Z ]{2,255}" required value="<?=array_get($form_values, 'name', '')?>" />  
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['birthdate']) ? error : '' ?>">
-                <label class="control-label" for="birthdate">Birthdate</label>
+                <label class="control-label" for="birthdate"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->birthdate?></label>
                 <div class="controls">
                     <input type="date" max="<?=date('Y-m-d', strtotime('-18 years')) ?>" name="birthdate"  class="span3" placeholde="yyy-mm-dd" required value="<?=array_get($form_values, 'birthdate', '')?>" /> 
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['citizenship']) ? error : '' ?>">
-                <label class="control-label" for="citizenship">Citizenship</label>
+                <label class="control-label" for="citizenship"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->citizenship?></label>
                 <div class="controls">
                     <select name="citizenship" class="span3" required> 
                     <?php 
@@ -121,36 +128,35 @@
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['equipment']) ? error : '' ?>">
-                <label class="control-label" for="equipment">Equipment</label>
+                <label class="control-label" for="equipment"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->equipement?></label>
                 <div class="controls">
-                    <?php /* TODO: find a way to loop and restore $form_value*/ ?>
                     <select name="equipment" class="span3" required value="<?=array_get($form_values, 'equipment', '')?>"> 
-                        <optgroup label="Caravan">
-                            <option value="s_caravan" <?=array_get($form_values, 'equipment', '') == 's_caravan' ? 'selected' : ''?>>caravan small</option>
-                            <option value="m_caravan" <?=array_get($form_values, 'equipment', '') == 'm_caravan' ? 'selected' : ''?>>caravan medium</option>
-                            <option value="l_caravan" <?=array_get($form_values, 'equipment', '') == 'l_caravan' ? 'selected' : ''?>>caravan large</option>
+                        <optgroup label="<?=$GLOBALS['dict']->page->{$_SESSION['lang']}->caravan?>">
+                            <option value="s_caravan" <?=array_get($form_values, 'equipment', '') == 's_caravan' ? 'selected' : ''?>><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->caravan?> <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->small?></option>
+                            <option value="m_caravan" <?=array_get($form_values, 'equipment', '') == 'm_caravan' ? 'selected' : ''?>><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->caravan?> <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->medium?></option>
+                            <option value="l_caravan" <?=array_get($form_values, 'equipment', '') == 'l_caravan' ? 'selected' : ''?>><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->caravan?> <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->large?></option>
                         </optgrou>
 
-                        <optgroup label="Camper">
-                            <option value="s_camper" <?=array_get($form_values, 'equipment', '') == 's_camper' ? 'selected' : ''?>>camper small</option>
-                            <option value="m_camper" <?=array_get($form_values, 'equipment', '') == 'm_camper' ? 'selected' : ''?>>camper medium</option>
-                            <option value="l_camper" <?=array_get($form_values, 'equipment', '') == 'l_camper' ? 'selected' : ''?>>camper large</option>
+                        <optgroup label="<?=$GLOBALS['dict']->page->{$_SESSION['lang']}->camper?>">
+                            <option value="s_camper" <?=array_get($form_values, 'equipment', '') == 's_camper' ? 'selected' : ''?>><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->camper?> <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->small?></option>
+                            <option value="m_camper" <?=array_get($form_values, 'equipment', '') == 'm_camper' ? 'selected' : ''?>><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->camper?> <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->medium?></option>
+                            <option value="l_camper" <?=array_get($form_values, 'equipment', '') == 'l_camper' ? 'selected' : ''?>><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->camper?> <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->large?></option>
                         </optgrou>
 
-                        <optgroup label="Tent">
-                            <option value="s_tent" <?=array_get($form_values, 'equipment', '') == 's_tent' ? 'selected' : ''?>>tent small</option>
-                            <option value="m_tent" <?=array_get($form_values, 'equipment', '') == 'm_tent' ? 'selected' : ''?>>tent medium</option>
-                            <option value="l_tent" <?=array_get($form_values, 'equipment', '') == 'l_tent' ? 'selected' : ''?>>tent large</option>
+                        <optgroup label="<?=$GLOBALS['dict']->page->{$_SESSION['lang']}->tent?>">
+                            <option value="s_tent" <?=array_get($form_values, 'equipment', '') == 's_tent' ? 'selected' : ''?>><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->tent?> <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->small?></option>
+                            <option value="m_tent" <?=array_get($form_values, 'equipment', '') == 'm_tent' ? 'selected' : ''?>><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->tent?> <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->medium?></option>
+                            <option value="l_tent" <?=array_get($form_values, 'equipment', '') == 'l_tent' ? 'selected' : ''?>><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->tent?> <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->large?></option>
                         </optgrou>
 
-                        <optgroup label="Other">
+                        <optgroup label="<?=$GLOBALS['dict']->page->{$_SESSION['lang']}->other?>">
                             <option value="other" <?=array_get($form_values, 'equipment', '') == 'other' ? 'selected' : ''?>>other - specify in Note</option>
                         </optgeoup>
                     </select>
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['email']) ? error : '' ?>">
-                <label class="control-label" for="email">Email</label>
+                <label class="control-label" for="email"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->email?></label>
                 <div class="controls">
                     <input type="email" name="email" placeholder="you@provider.domain" class="span3" required value="<?=array_get($form_values, 'email', '')?>" /> 
                 </div>
@@ -160,19 +166,19 @@
         <fieldset class="span6">
             <legend>Booking data</legend>
             <div class="control-group <?= isset($form_errors['arrival']) ? error : '' ?>">
-                <label class="control-label" for="arrival">Arrival</label>
+                <label class="control-label" for="arrival"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->arrival?></label>
                 <div class="controls">
                     <input type="date" min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="arrival"  placeholder="2014-mm-dd" class="span3" required value="<?=array_get($form_values, 'arrival', '')?>" /> 
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['departure']) ? error : '' ?>">
-                <label class="control-label" for="departure">Departure</label>
+                <label class="control-label" for="departure"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->departure?></label>
                 <div class="controls">
                     <input type="date" min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="departure" placeholder="2014-mm-dd" class="span3" required value="<?=array_get($form_values, 'departure', '')?>" /> 
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['pitch']) ? error : '' ?>">
-                <label class="control-label" for="pitch">Fav. Pitch</label>
+                <label class="control-label" for="pitch"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->fav_pitch?></label>
                 <div class="controls">
                     <select name="pitch" class="span3" size="1" requierd> 
                     <?php 
@@ -202,7 +208,7 @@
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['adults']) ? error : '' ?>">
-                <label class="control-label" for="adults">Adults</label>
+                <label class="control-label" for="adults"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->adults?></label>
                 <div class="controls">
                     <select name="adults" class="span3" required> 
                     <?php 
@@ -217,7 +223,7 @@
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['children']) ? error : '' ?>">
-                <label class="control-label" for="children">Children</label>
+                <label class="control-label" for="children"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->children?></label>
                 <div class="controls">
                     <select name="children" class="span3" required value="<?=array_get($form_values, 'children', '0')?>"> 
                     <?php 
@@ -232,7 +238,7 @@
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['email_again']) ? error : '' ?>">
-                <label class="control-label" for="email_again">Email againg</label>
+                <label class="control-label" for="email_again"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->email_again?></label>
                 <div class="controls">
                     <input type="email" name="email_again" placeholder="you@provider.domain" class="span3" required value="<?=array_get($form_values, 'email_again', '')?>" />
                 </div>
@@ -247,10 +253,11 @@
             </div>
         </div>
     </fieldset>
+
     <footer class="actions row">
         <center>
-        <button type="reset" class="btn btn-inverse span6">Undo</button>
-        <button type="submit" class="btn btn-success span6">Reserve!</button>
+        <button type="reset" class="btn btn-inverse span6"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->reset?></button>
+        <button type="submit" class="btn btn-success span6"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->reserve?></button>
         </center>
     </footer>
 </form>

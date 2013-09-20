@@ -73,7 +73,7 @@ class Utils {
 
     public static function load_dict() {
         if(!isset($GLOBALS['dict']))
-            $GLOBALS['dict'] = self::load_json('./static/json/dict.json');
+            $GLOBALS['dict'] = self::load_json('./texts/dict.json');
     }
 }
 ?>

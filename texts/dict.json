@@ -8,10 +8,96 @@
         "ita" : "italiano"
     },
     "carousel" : [
-      {"url" : "static/img/carousel/CampingPuntaIndianiHeader0.jpg"},
-      {"url" : "static/img/carousel/CampingPuntaIndianiHeader1.jpg"},
-      {"url" : "static/img/carousel/CampingPuntaIndianiHeader4.jpg"},
-      {"url" : "static/img/carousel/CampingPuntaIndianiHeader6.jpg"}
+        {"url" : "static/img/carousel/CampingPuntaIndianiHeader0.jpg"},
+        {"url" : "static/img/carousel/CampingPuntaIndianiHeader1.jpg"},
+        {"url" : "static/img/carousel/CampingPuntaIndianiHeader4.jpg"},
+        {"url" : "static/img/carousel/CampingPuntaIndianiHeader6.jpg"}
+    ],
+    "news" : [
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-08-24",
+            "to" : "2013-10-1",
+            "pre" : "26-08-2013",
+            "msg": {
+                "eng" : "low season",
+                "ned" : "laagseizoen",
+                "ger" : "nebensaison",
+                "ita" : "bassa stagione"
+            }
+        }
     ],
     "prices" : {
       "year" : "2013",
@@ -148,7 +234,7 @@
         "ger": {
             "info": "Informationen",
             "map": "Plan",
-            "offers": "Angebot-news",
+            "offers": "Angebot",
             "welcome": "Wilkommen",
             "gallery": "Gallery",
             "languages": "sprachen",
@@ -164,7 +250,7 @@
         "ned": {
             "info": "Informatie",
             "map": "Plattegrond",
-            "offers": "Offers-news",
+            "offers": "Offers",
             "welcome": "Welkom",
             "gallery": "Gallery",
             "languages": "talen",
@@ -180,7 +266,7 @@
         "ita": {
             "info": "Richiesta info",
             "map": "Cartina",
-            "offers": "Offerte-news",
+            "offers": "Offerte",
             "welcome": "Benvenuti",
             "gallery": "Galleria",
             "languages": "Lingue",
@@ -196,7 +282,7 @@
         "eng": {
             "info": "Information",
             "map": "Map",
-            "offers": "Offers-news",
+            "offers": "Offers",
             "welcome": "Welcome",
             "gallery": "Gallery",
             "languages": "Languages",
@@ -222,6 +308,7 @@
              ],
             "surname" : "familienname",
             "name":"name",
+            "citizenship": "staatsbuergschaft",
             "birthdate":"geburstag in",
             "birthplace":"geburtsstadt",
             "residence":"residenz",
@@ -233,6 +320,17 @@
             "people":"menschen",
             "note":"beachten",
             "reserve":"reserve",
+            "caravan" : "wohnwagen",
+            "camper" : "wohnmobile",
+            "tent" : "zelt",
+            "other" : "anders",
+            "small":"klein",
+            "medium":"mittel",
+            "large": "gross",
+            "equipement":"zubehoer",
+            "adults":"erwachsene",
+            "children":"kinder",
+            "email_again":"email wieder",
             "f_reserve":"kraft buchung mit warnungen",
             "reset":"reset",
             "TeC_label":"Bedingungen und Konditionen",
@@ -318,6 +416,7 @@
             ],
             "surname" : "familienaam",
             "name":"naam",
+            "citizenship": "burgerschap",
             "birthdate":"geboortedatum",
             "birthplace":"geboorteplaats",
             "residence":"woning",
@@ -329,6 +428,17 @@
             "people":"mensen",
             "note":"noot",
             "reserve":"reserve",
+            "caravan" : "caravan",
+            "camper" : "camper",
+            "tent" : "tent",
+            "other" : "ander",
+            "small":"klein",
+            "medium":"gemiddeld",
+            "large": "groot",
+            "equipement":"uitrusting",
+            "adults":"volwassenen",
+            "children":"kind",
+            "email_again":"email opnieuw",
             "f_reserve":"kracht boeking met waarschuwingen",
             "reset":"reset",
             "TeC_label" : "algemene voorwaarden",
@@ -413,6 +523,7 @@
              ],
             "surname" : "cognome",
             "name":"nome",
+            "citizenship": "cittadinanza",
             "birthdate":"data di nascita",
             "birthplace":"luogo di nascita",
             "residence":"residenza",
@@ -424,6 +535,17 @@
             "people":"persone",
             "note":"note",
             "reserve":"prenota",
+            "caravan" : "roulotte",
+            "camper" : "camper",
+            "tent" : "tenda",
+            "other" : "altro",
+            "small":"piccolo/a",
+            "medium":"medio/a",
+            "large": "grande",
+            "equipement":"mezzo",
+            "adults":"adulti",
+            "children":"bambini",
+            "email_again":"ripeti email",
             "f_reserve":"forza prenotazione [senza campi opzionali]",
             "reset":"reset",
             "TeC_label" : "termini e condizioni",
@@ -436,9 +558,9 @@
             "extra_explanation": "* Extra = 2nd macchina - piccola tenda - barca, etc. Esterni alla piazzola",
             "visitor_explanation": "** Eventuali visite giornaliere devono essere autorizzate dalla direzione",
             "booking_disclaimer": [
-                "Ai sensi dell'articolo 13 del D.Lgs giunio 2003 n.160",
+                "Ai sensi dell'articolo 13 del D.Lgs giugno 2003 n.160",
                 "E' garantita l'assoluta riservatezza dei dati a qualunque titolo inviatici dai nostri clienti.",
-                "La informiamo che il suo indirizzo (email) verr\u00e0 utlizzato da Camping Punta Indiani per l'invio di materiale informativo-promozionale nonche per la gestione della sua prenotazione e registrazione relative all'attivita di Camping Punta Indiani.",
+                "La informiamo che il suo indirizzo (email) verr\u00e0 utlizzato da Camping Punta Indiani per l'invio di materiale informativo-promozionale nonche' per la gestione della sua prenotazione e registrazione relative all'attivita di Camping Punta Indiani.",
                 "Per motivi organizzativi la direzione si riserva il diritto di cambiare il numero della piazzola."
             ],
             "dogs": "I cani non sono ammessi",
@@ -508,6 +630,7 @@
              ],
             "surname" : "surname",
             "name":"name",
+            "citizenship" : "citizenship",
             "birthdate":"birth date",
             "birthplace":"native town",
             "residence":"residence",
@@ -519,6 +642,17 @@
             "people":"people",
             "note":"note",
             "reserve":"reserve",
+            "caravan" : "caravan",
+            "camper" : "camper",
+            "tent" : "tent",
+            "other" : "other",
+            "small":"small",
+            "medium":"medium",
+            "large": "large",
+            "equipement":"equipement",
+            "adults":"adults",
+            "children":"children",
+            "email_again":"email again",
             "f_reserve":"force booking with warnings",
             "reset":"reset",
             "TeC_label" : "terms and conditions",
