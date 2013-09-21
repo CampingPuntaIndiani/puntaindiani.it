@@ -42,43 +42,34 @@
         }
     }
 
-    if(isset($backend_error)):
+    if(isset($backend_error)){
+        $message_type = 'error';
+        $message_title = 'Looks like something went wrong!';
+        $message_body = join(array(
+            'We track these errors automatically, but if the problem persists feel free to contact us.',
+            'In the meantime, try refreshing.'), '<br>');
+        $message_footer = 'Please try again later.';
+    } else if(isset($booking_status) and $booking_status !== TRUE and $booking_status !== FALSE){
+        $message_type = 'error';
+        $message_title = 'Looks like something went wrong  with your Reservation!';
+        $message_body = 'We track these errors automatically, but if the problem persists feel free to contact us.';
+        $message_footer = 'Please try again later.';
+    } else if(isset($booking_status) and $booking_status === TRUE){
+        $message_type = 'success';
+        $message_title = 'Reservation completed successfully!';
+        $message_body = join(array(
+            'We have sent you an email with your reservation data.',
+            'If it\'s not in your incoming mail please check the spam folder.'
+            ), '<br>');
+        $message_footer = 'See you in summer!';
+    }
+    if (isset($error_type)): 
 ?>
-    <div class="well">
-        <h4><span class="text-error">Looks like something went wrong!</span></h4>
-        <h5>
-            We track these errors automatically, but if the problem persists feel free to contact us.</br>
-            In the meantime, try refreshing.
-        </h5>
-        <center><em>Please try againg later.</em></center>
-    </div>
-<?php
-        return;
-    endif;
-
-    if(isset($booking_status) and $booking_status !== TRUE and $booking_status !== FALSE):
-?>
-    <div class="well">
-        <h4><span class="text-error">Looks like something went wrong  with your Reservation!</span></h4>
-        <h5>
-            We track these errors automatically, but if the problem persists feel free to contact us.</br>
-        </h5>
-        <center><em>Please try againg later.</em></center>
-    </div>
-<?php
-        return;
-    endif;
-
-    if(isset($booking_status) and $booking_status === TRUE):
-?>
-    <div class="well">
-        <h4><span class="text-success">Reservation completed successfully!</span></h4>
-        <h5>
-            We have sent you an email with your reservation data.</br>
-            If it's not in your incoming mail please check the spam folder.
-        </h5>
-        <center><em>See you in summer!.</em></center>
-    </div>
+        <div class="well">
+            <h4><span class="text-<?=message_type?>"><?$message_type?></span></h4>
+            <h5><?=message_body?></h5>
+            <center><em><?=message_footer?></em></center>
+        </div>
 <?php
         return;
     endif;
