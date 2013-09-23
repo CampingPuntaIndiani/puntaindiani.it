@@ -13,7 +13,7 @@
             '@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
             '@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
         );
-     
+
         $output = preg_replace($search, '', $input);
         return $output;
     }
@@ -139,7 +139,7 @@
                 'arrival' => $form_values['arrival'],
                 'departure' => $form_values['departure'],
             );
-            $backend_response = Utils::load_remote_json('https://127.0.0.1/backend/reserve/', $backend_post);
+            $backend_response = Utils::load_remote_json($GLOBALS['backend_url'].'reserve/'), $backend_post);
         } catch(Exception $ex) {
             return sprintf("500 Internal Server Error: %s \r\n", $ex);
         }

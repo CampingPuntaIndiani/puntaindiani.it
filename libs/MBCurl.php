@@ -49,7 +49,7 @@ class MBCurl {
         if ($err) {
             throw new Exception($errmsg, $err);
         }
-        
+
         if ($header['http_code'] !== 200) {
             throw new Exception($errmsg, $header['http_code']);
         }

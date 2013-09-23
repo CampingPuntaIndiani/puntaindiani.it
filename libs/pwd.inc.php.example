@@ -1,11 +1,12 @@
 <?php
     
 #TODO: change in production
-    global $db_name, $db_user, $db_pass, $db_host, $curl_pwd, $curl_user;
+    global $db_name, $db_user, $db_pass, $db_host, $curl_pwd, $curl_user, $backend_url;
     $db_name = 'gallery';
     $db_user = 'gallery';
     $db_pass = 'gallery';
     $db_host = 'localhost';
     $curl_pwd = '4h2MaEBmQ9hVbLvn';
     $curl_user = 'puntaindiana';
+    $backend_url = 'https://localhost/';
 ?>

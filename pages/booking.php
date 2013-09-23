@@ -21,7 +21,6 @@
 
     session_commit();
 
-
     if (isset($_POST['booking_code']) and $old_booking_code !== null) {
         if($old_booking_code == $_POST['booking_code']) { // Valid request
             $booking_status = include('libs/reserve.php');
@@ -33,8 +32,7 @@
     }
 
     try {
-        //$options = $Utils::load_remote_json('https://backend.martin-dev.tk/backend/options/');
-        $options = Utils::load_remote_json('https://127.0.0.1/backend/options/');
+        $options = Utils::load_remote_json($GLOBALS['backend_url'].'/options/');
     } catch (Exception $e){
         $backend_error = TRUE;
         $admin_mail =  new Mail($e, "martin.brugnara@gmail.com", 'PHP@puntaindiana.it', 'connection error');
