@@ -7,9 +7,9 @@
 // 800x600 gallery
 // 170x125 ico
 
-$srv_base = '/srv/puntaindiani.it/'; // /srv/puntaindiani.it/
+$srv_base = '/web/htdocs/www.puntaindiana.it/home/'; // /srv/puntaindiani.it/
 
-include_once 'libs/db.inc.php';
+include_once 'libs/pwd.inc.php';
 include_once 'libs/media.inc.php';
 
 
@@ -43,7 +43,8 @@ $uploaded = array(
 
 $link = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die('Error '.mysqli_error($link));
 
-foreach (get_normalized_FILES()['photoes'] as $key => $photo) {
+$norm_FILES=get_normalized_FILES();
+foreach ($norm_FILES['photoes'] as $key => $photo) {
     $ext = strrchr($photo['name'], '.');
     $ext = strtolower($ext);
 
