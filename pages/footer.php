@@ -37,7 +37,7 @@
 
     <script>
       // ajax support
-      var start_up = {
+      window.start_up = {
           page : '<?=$_SESSION['page']?>',
           curr_lang : '<?=$_SESSION['lang']?>'
         };
@@ -47,18 +47,16 @@
       }));
     </script>
     <!-- Google analytics -->
-    <!-- uncomment to enable 
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-34314298-1']);
-      _gaq.push(['_trackPageview', start_up.page+'_'+start_up.curr_lang]);
+      _gaq.push(['_trackPageview', window.start_up.page+'_'+window.start_up.curr_lang]);
       (function() {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = 'https://ssl.google-analytics.com/ga.js';
+      ga.src = '//ssl.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    -->
     <!-- end of Google analytics -->
   </body>
 </html>

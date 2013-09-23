@@ -15,13 +15,24 @@
 
         </div>
         <footer class="row centered">
-            <a href="https://www.google.com/maps/preview#!data=!1m4!1m3!1d3376!2d11.2326622!3d46.0279884!4m25!2m11!1m10!1s0x0%3A0xd5c1e8a889a3283!3m8!1m3!1d26081603!2d-95.677068!3d37.0625!3m2!1i1024!2i768!4f13.1!5m12!1m11!1sPunta+Indiani!4m8!1m3!1d26081603!2d-95.677068!3d37.0625!3m2!1i1024!2i768!4f13.1!17b1" target="_blank">Zoom</a>
+            <a href="//www.google.com/maps/preview#!data=!1m4!1m3!1d3376!2d11.2326622!3d46.0279884!4m25!2m11!1m10!1s0x0%3A0xd5c1e8a889a3283!3m8!1m3!1d26081603!2d-95.677068!3d37.0625!3m2!1i1024!2i768!4f13.1!5m12!1m11!1sPunta+Indiani!4m8!1m3!1d26081603!2d-95.677068!3d37.0625!3m2!1i1024!2i768!4f13.1!17b1" target="_blank">Zoom</a>
         </footer>
       </section>
 
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoAQvmSSuH0olUcnb1pWVHUDLLsGLdnoY&sensor=false"></script>
       <script type="text/javascript">
-        (function() {
+        var gMapsLoaded = false;
+        window.gMapsCallback = function(){
+          gMapsLoaded = true;
+          $(window).trigger('gMapsLoaded');
+        }
+        window.loadGoogleMaps = function(){
+          if(gMapsLoaded || window['google']!==undefined) return window.gMapsCallback();
+          var script_tag = document.createElement('script');
+          script_tag.setAttribute("type","text/javascript");
+          script_tag.setAttribute("src","//maps.google.com/maps/api/js?key=AIzaSyBoAQvmSSuH0olUcnb1pWVHUDLLsGLdnoY&sensor=false&callback=gMapsCallback");
+          (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+        }
+        $(function() {
           var map, marker;
           function initialize() {
             var point = new google.maps.LatLng(46.027988, 11.232662);
@@ -57,7 +68,7 @@
               marker.setAnimation(google.maps.Animation.BOUNCE);
             }
           }
-
-          google.maps.event.addDomListener(window, 'load', initialize);
-        })();
+          $(window).bind('gMapsLoaded', initialize);
+          window.loadGoogleMaps();
+        });
     </script>

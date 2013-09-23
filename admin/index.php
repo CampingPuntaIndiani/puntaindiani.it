@@ -10,7 +10,7 @@
 
   if(isset($_POST['update']) and $_POST['update'] == '1') {
     unset($_POST['update']);
-    
+
     foreach ($_POST as $id => $authorized) {
       $query = sprintf("UPDATE photoes SET authorized=%s WHERE id=%s LIMIT 1",
         intval($authorized), intval($id));
