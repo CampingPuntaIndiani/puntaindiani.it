@@ -29,9 +29,19 @@
                 $input = stripslashes($input);
             }
             $input  = cleanInput($input);
-            $output = mysql_real_escape_string($input);
+            # We have no DB connection at that point.
+            # So mysql_real_escape_string is not available
+            #$output = mysql_real_escape_string($input);
+            $output = mres($input);
         }
         return $output;
+    }
+    function mres($value)
+    {
+        $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");
+        $replace = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z");
+
+        return str_replace($search, $replace, $value);
     }
 
     //  Basic sanitization
@@ -111,7 +121,7 @@
 
     list($equipment_size, $equipment_type) = split('_', array_get($_POST, 'equipment', ''));
 
-    if (!((in_array($equipment_type , array('caravan', 'camper', 'tent')) and in_array($equipment_size, array('s', 'm', 'l'))) or in_array($equipment_type, array('other')))) {
+    if (!((in_array($equipment_type , array('caravan', 'camper', 'tent')) and in_array($equipment_size, array('s', 'm', 'l'))) or in_array($equipment_size, array('other')))) {
         $form_errors['equipment'] = 'Not valid';
     } else {
         $form_values['equipment'] = array_get($_POST, 'equipment', '');
@@ -139,13 +149,55 @@
                 'arrival' => $form_values['arrival'],
                 'departure' => $form_values['departure'],
             );
-            $backend_response = Utils::load_remote_json($GLOBALS['backend_url'].'reserve/'), $backend_post);
+            $backend_response = Utils::load_remote_json($GLOBALS['backend_url'].'reserve/', $backend_post);
         } catch(Exception $ex) {
             return sprintf("500 Internal Server Error: %s \r\n", $ex);
         }
 
         /* this sould never happend but... double validation is better the single */
         if ($backend_response->{'success'} == TRUE) {
+            function i18n_email(&$dict, $lang_key) {
+                $keys = array('reservation_code', 'client_id', 'surname', 'name',
+                    'birthdate', 'citizenship', 'arrival', 'departure',
+                    'fav_pitch', 'note');
+                $max_length = 0;
+                foreach($keys as $_ => $key){
+                    $max_length = max($max_length, 
+                        strlen(array_get($GLOBALS['dict']->page->{$lang_key}, $key, $key)),
+                        strlen(array_get($dict, $key, $key)));
+                }
+                $mail_text_array = array();
+                $format_string = sprintf('%%-%ds:%%s', $max_length+4);
+                foreach($keys as $_ => $key) {
+                    array_push($mail_text_array, sprintf(
+                        $format_string,
+                        array_get($GLOBALS['dict']->page->{$lang_key}, $key, $key),
+                        array_get($dict, $key, $key)));
+                }
+                return $mail_text_array;
+            }
+
+            $mail_data = $backend_post;
+            unset($mail_data['ip']);
+            unset($mail_data['pitch']);
+            $mail_data['citizenship'] = $backend_response->citizenship;
+            $mail_data['fav_pitch'] = $backend_response->fav_pitch;
+            $mail_data['reservation_code'] = $backend_response->reservation_id;
+            $mail_data['client_id'] = $backend_response->client_id;
+
+            $guest_mail = new Mail(
+                join(i18n_email($mail_data, $_SESSION['lang']), "\r\n"),
+                $form_values['email'],
+                'info@campingpuntaindiani.it',
+                sprintf('Reservation: %s', $backend_response->reservation_id));
+            $guest_send_status = $guest_mail->send();
+            $mail_data['guest_mail'] = $guest_send_status;
+            $office_mail = new Mail(
+                join(i18n_email($mail_data, 'eng'),"\r\n"),
+                'info@campingpuntaindiani.it',
+                $form_values['email'],
+                sprintf('wres: %s', $backend_response->reservation_id));
+            $office_mail->send();
             return TRUE;
         } else {
             foreach ($backend_response->{'errors'} as $filed => $error) {

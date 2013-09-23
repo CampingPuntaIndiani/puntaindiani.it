@@ -16,13 +16,12 @@
 
         public function send()
         {
-            $headers  = "\r\n".join(array(
+            $headers = join(array(
                 sprintf('From: %s', $this->from),
                 'Content-Type: text/plain; charset=UTF-8',
                 'Content-Transfer-Encoding: 8bit',
                 '',
-                ''
-            ));
+                ''), "\r\n");
 
             #mail($to, $subject, $message, $headers); // Tecnodata
             return mail($this->to, '=?UTF-8?B?'.base64_encode($this->subject).'?=', $this->message, $headers, "-f".$this->from); // Aruba

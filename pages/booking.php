@@ -8,6 +8,8 @@
     include_once('libs/Mail.php');
 
     function array_get(&$array, $name="", $fallback="") {
+        if (is_object($array))
+            return isset($array->{$name}) ? $array->{$name} : $fallback;
         return isset($array[$name]) ? $array[$name] : $fallback;
     }
 
