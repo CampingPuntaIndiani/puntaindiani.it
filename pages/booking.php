@@ -3,6 +3,7 @@
 
     Utils::load_dict();
 
+    include_once('libs/pwd.inc.php');
     include_once('libs/MBCurl.php');
     include_once('libs/Mail.php');
 
@@ -63,12 +64,12 @@
             ), '<br>');
         $message_footer = 'See you in summer!';
     }
-    if (isset($error_type)): 
+    if (isset($message_type)): 
 ?>
         <div class="well">
-            <h4><span class="text-<?=message_type?>"><?$message_type?></span></h4>
-            <h5><?=message_body?></h5>
-            <center><em><?=message_footer?></em></center>
+            <h4><span class="text-<?=$message_type?>"><?=$message_title?></span></h4>
+            <h5><?=$message_body?></h5>
+            <center><em><?=$message_footer?></em></center>
         </div>
 <?php
         return;

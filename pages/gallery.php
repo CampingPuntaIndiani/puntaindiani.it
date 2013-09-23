@@ -3,7 +3,7 @@
   Utils::load_dict();
 
   $srv_base = '/'; 
-  include_once 'libs/db.inc.php';
+  include_once 'libs/pwd.inc.php';
   include_once 'libs/media.inc.php';
 
 

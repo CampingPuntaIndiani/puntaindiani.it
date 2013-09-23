@@ -1,7 +1,7 @@
 <?php
 
   $srv_base = '/'; 
-  include_once '../libs/db.inc.php';
+  include_once '../libs/pwd.inc.php';
   include_once '../libs/media.inc.php';
 
   $link = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die('Error '.mysqli_error($link));

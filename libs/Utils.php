@@ -14,8 +14,6 @@ class Utils {
         return $obj;
     }
 
-
-
     public static function &load_file($uri) {
         $content=file_get_contents($uri); 
         if ($content === FALSE)
@@ -28,7 +26,6 @@ class Utils {
         if (json_last_error() !== JSON_ERROR_NONE)
             throw new Exception("Error parsing json", json_last_error());
         return $json;
-
     }
 
     // Load config - set session vars
