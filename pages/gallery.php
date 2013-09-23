@@ -18,6 +18,7 @@
         <header>
           <p id="upload_errors" class="text-error"></p>
         </header>
+        <p class="text-warning">Max simultaneous files: 5, Max photo size: 10MB.</p>
         <div class="row">
           <div class="span8">
             <form class="form-inline" method="POST" enctype="multipart/form-data" action="/upload_photo.php" id="upload_form">

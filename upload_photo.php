@@ -1,5 +1,5 @@
 <?php
-// max photo size 4M
+// max photo size 10M
 // max photo resolution 2880x1800
 // preferred resolution 1920x1080
 
@@ -14,15 +14,15 @@ include_once 'libs/media.inc.php';
 
 
 // TODO: test if aruba allow ini_set
-//ini_set('post_max_size', '22M'); // max post size //!ARUBA: 30M
-//ini_set('upload_max_filesize', '5M'); // max size per file //!ARUBA: 25M
-//ini_set('max_file_uploads', '5'); // max 4 upload a time //!ARUBA 20
-//ini_set('max_input_time', '600'); // max upload time 10 minutes //!ARUBA: 120
+ini_set('post_max_size', '60M'); // max post size //!ARUBA: 30M
+ini_set('upload_max_filesize', '10M'); // max size per file //!ARUBA: 25M
+ini_set('max_file_uploads', '5'); // max files upload a time //!ARUBA 20
+ini_set('max_input_time', '600'); // max upload time 10 minutes //!ARUBA: 120
 
 // Aruba seams allows ini_set so...
 ini_set("memory_limit", "128M");
 ini_set("max_execution_time", "300");
-$UPLOADS_MAX_FILESIZE = 25 * 1024 * 1024 ;
+$UPLOADS_MAX_FILESIZE = 10 * 1024 * 1024 ;
 
 function get_normalized_FILES () {
     $newfiles = array();

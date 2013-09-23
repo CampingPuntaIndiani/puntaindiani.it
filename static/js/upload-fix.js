@@ -1,6 +1,6 @@
 "use strict";
-var max_file_size = 5 * 1024 * 1024; //5M
-var max_file_uploads = 4;
+var max_file_size = 10 * 1024 * 1024; //10M
+var max_file_uploads = 5;
 
 (function($){
     $(document).ready(function() {
