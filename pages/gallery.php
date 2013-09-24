@@ -129,6 +129,7 @@
                   continuous: true,
                   fullScreen: false, //no double esc on close
                   toggleControlsOnReturn: false,
+                  preloadRange: 1,
                   onopen: function () {
                     $('iframe').hide(); // Fackyou you tube! shit of flash.
                   },
