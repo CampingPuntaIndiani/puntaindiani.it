@@ -77,7 +77,7 @@ foreach ($norm_FILES['photoes'] as $key => $photo) {
     $resizer->saveImage($ico);
 
     // update db
-    if ($stmt = $link->prepare("INSERT INTO photoes (name, file_name, uploader_email, authorized, uploaded_datetime, album) VALUES (?,?,?,0,?,?)")) {
+    if ($stmt = $link->prepare("INSERT INTO photoes (name, file_name, uploader_email, authorized, uploaded_datetime, album_id) VALUES (?,?,?,0,?,(SELECT id FROM album WHERE name = ?))")) {
         $stmt->bind_param("sssss", $photo['name'], $new_name, $_POST['email'], $now->format('Y-m-d H:i:s'), strtolower($_POST['album']));
         $stmt->execute();
         $stmt->close();

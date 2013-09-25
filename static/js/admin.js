@@ -25,13 +25,25 @@
   });
   $('button[data-action=save]').on('click', function () {
     var update_dict = {};
-    $('.make-switch').each(function(){
-      var e = $(this), i = e.find('input');
-      if (e.bootstrapSwitch('status') !== (i.attr('data-init') == 1)) {
-        update_dict[parseInt(i.attr('name'))] = (e.bootstrapSwitch('status') ? 1 : 0);
+    $('input').each(function(){
+      var i = $(this);
+      if (i.attr('type') == "checkbox") {
+        var e = i.parents('.make-switch');
+        if (e.bootstrapSwitch('status') !== (i.attr('data-init') == 1)) {
+          update_dict[i.attr('name')] = (e.bootstrapSwitch('status') ? 1 : 0);
+        }
+      } else {
+        if (i.val() != i.attr('data-init')) {
+          update_dict[i.attr('name')] = i.val();
+        }
       }
     });
-    
+
+    if (Object.key(update_dict).lentgth === 0) {
+      /* Nothing to do return */
+      return;
+    }
+
     $.ajax({
       url: '/admin/index.php',
       method: 'POST',

@@ -11,7 +11,6 @@
       <header>
       <?=join('<br>',$GLOBALS['dict']->page->{$_SESSION['lang']}->send_photo)?>
       </header>
-      
       <br>
 
       <section name="upload">
@@ -38,10 +37,15 @@
       </section>
       <script type="text/javascript" src="/static/js/jquery.form.js"></script>
       <script type="text/javascript" src="/static/js/upload-fix.js"></script>
-      
+
       <section name="gallery">
       <?php
-        $query = "SELECT name, file_name, uploader_email, album FROM photoes WHERE authorized=1 ORDER BY album ASC";
+        $query = join(array(
+            "SELECT photoes.name, file_name, uploader_email, album.name",
+            "FROM photoes, album",
+            "WHERE album_id=album.id AND album.show=1 AND authorized=1 ",
+            "ORDER BY album.priority DESC, photoes.priority, RAND()"),
+            " ");
         if ($stmt = $link->prepare($query)) {
           $stmt->execute();
           $stmt->bind_result($name, $file_name, $uploader_email, $album);
