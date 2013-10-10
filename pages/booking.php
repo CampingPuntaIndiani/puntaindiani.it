@@ -1,4 +1,11 @@
 <?php
+
+    $rsv_opening = strtotime('2014-01-01');
+    if (time() < $rsv_opening) {
+        printf("<p style='font-size:14pt;text-align:center'>You can submit your reservation request starting by <strong>2014-01-01</strong></p>");
+        return;
+    }
+
     if (!(isset($GLOBALS['valid_req']) and $GLOBALS['valid_req'] === TRUE)) return;
 
     Utils::load_dict();
