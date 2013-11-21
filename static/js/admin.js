@@ -39,8 +39,9 @@
       }
     });
 
-    if (Object.key(update_dict).lentgth === 0) {
+    if (Object.keys(update_dict).lentgth === 0) {
       /* Nothing to do return */
+      console.log("nothing to update")
       return;
     }
 
