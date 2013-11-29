@@ -40,7 +40,7 @@
         }
     ],
     "prices" : {
-      "year" : "2013",
+      "year" : "2014",
       "low" : {
         "periods" : [
           { "from" : "27-04", "to" : "30-06" },
@@ -58,9 +58,9 @@
         "periods" : [
           { "from" : "01-07", "to" : "10-07" }
         ],
-        "place_a" : {"price": "15.00", "type":"special"},
-        "place_b" : {"price": "12.00", "type":"special"},
-        "place_c" : {"price": "10.00", "type":"special"},
+        "place_a" : {"price": "16.00", "type":"special"},
+        "place_b" : {"price": "13.00", "type":"special"},
+        "place_c" : {"price": "11.00", "type":"special"},
         "person"  : {"price": "10.00", "type":"special"},
         "child"   : {"price": "6.00" , "type":"special"},
         "extra"   : {"price": "5.00"},
@@ -70,9 +70,9 @@
         "periods" : [
           { "from" : "11-07", "to" : "31-08" }
         ],
-        "place_a" : {"price": "17.00"},
-        "place_b" : {"price": "14.00"},
-        "place_c" : {"price": "11.00"},
+        "place_a" : {"price": "18.00"},
+        "place_b" : {"price": "15.00"},
+        "place_c" : {"price": "12.00"},
         "person"  : {"price": "11.00"},
         "child"   : {"price": "6.50"},
         "extra"   : {"price": "5.00"},
