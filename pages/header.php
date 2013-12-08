@@ -3,6 +3,30 @@
 
   Utils::load_dict();
 
+  /* generating news */
+
+  function gen_news(){  
+    $now = new DateTime('NOW');
+    $ret=array();
+    $ret['num'] = 0;
+    $ret['news'] = array();
+    foreach ($GLOBALS['dict']->{'news'} as $key => $news) {
+      if ($news->{'active'}) {
+        $from = DateTime::createFromFormat('Y-m-d', $news->{'from'});
+        $to = DateTime::createFromFormat('Y-m-d', $news->{'to'});
+        if ($from === FALSE or ($from <= $now and $now < $to)) {
+          array_push($ret['news'], '<li><a>');
+          array_push($ret['news'], '<span class="text-warning"><strong>'.$news->{'pre'}.'</strong></span>&nbsp');
+          array_push($ret['news'], '<span class="text-info"><strong><em>'.$news->{'msg'}->{$_SESSION['lang']}.'</em></strong></span>');
+          array_push($ret['news'], '</a></li>');
+          $ret['num']+=1;
+        }
+      }
+    }
+    return $ret;
+  }
+  $news = gen_news();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +47,7 @@
     <link rel="stylesheet" media="all" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu:300,500,700&subset=latin">
     <style type="text/css">
 <?php
-  $tot = count($GLOBALS['dict']->{'news'});
+  $tot = $news['num'];
   $lh = 31;
   $css_a = array();
   $i=0;
@@ -133,24 +157,7 @@
     <section name="news">
       <div class="container">
           <div class="well well-small" id="news_ticker">
-            <ul>
-              <?php
-                $now = new DateTime('NOW');
-                foreach ($GLOBALS['dict']->{'news'} as $key => $news) {
-                  if ($news->{'active'}) {
-                    $from = DateTime::createFromFormat('Y-m-d', $news->{'from'});
-                    $to = DateTime::createFromFormat('Y-m-d', $news->{'to'});
-                    if ($from === FALSE or ($from <= $now and $now < $to)) {
-                      $str = array('<li><a>');
-                      array_push($str, '<span class="text-warning"><strong>'.$news->{'pre'}.'</strong></span>&nbsp');
-                      array_push($str, '<span class="text-info"><strong><em>'.$news->{'msg'}->{$_SESSION['lang']}.'</em></strong></span>');
-                      array_push($str, '</a></li>');
-                      print(''.join($str));
-                    }
-                  }
-                }
-              ?>
-            </ul>
+            <ul> <?=' '.join($news['news'])?></ul>
           </div>
       </div>
     </section>

@@ -2,7 +2,8 @@
 
     $rsv_opening = strtotime('2014-01-01');
     if (time() < $rsv_opening) {
-        printf("<p style='font-size:14pt;text-align:center'>You can submit your reservation request starting by <strong>2014-01-01</strong></p>");
+        printf("<p style='font-size:14pt;text-align:center'>We will open reservations again <strong>January 1, 2014</strong></p>");
+        # TODO: comment for dev
         return;
     }
 
@@ -32,7 +33,8 @@
 
     if (isset($_POST['booking_code']) and $old_booking_code !== null) {
         if($old_booking_code == $_POST['booking_code']) { // Valid request
-            $booking_status = include('libs/reserve.php');
+            # TODO: uncomment to enable booking request!
+            # $booking_status = include('libs/reserve.php');
         } else { // Unvalid Request (code expired or not set)
             printf("<script>(function(){window.location.replace('/');})()</script>"); // (Clean browser POST history)
             printf('<a href="/" target="_self" class="span12 btn btn-warning">Plaese click here to continue</a>'); // No JS fallback
@@ -93,25 +95,25 @@
     <div class="row">
         <fieldset class="span6">
             <legend>Personal Information</legend>
-            <div class="control-group <?= isset($form_errors['surname']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['surname']) ? 'error' : '' ?>">
             <label class="control-label" for="surname"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->surname?></label>
                 <div class="controls">
                     <input type="text" name="surname" placeholder="Smith" class="span3" pattern="[a-zA-Z ]{2,255}" required value="<?=array_get($form_values, 'surname', '')?>" /> 
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['name']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['name']) ? 'error' : '' ?>">
                 <label class="control-label" for="name"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->name?></label>
                 <div class="controls">
                     <input type="text" name="name" placeholder="Alice" class="span3" pattern="[a-zA-Z ]{2,255}" required value="<?=array_get($form_values, 'name', '')?>" />  
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['birthdate']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['birthdate']) ? 'error' : '' ?>">
                 <label class="control-label" for="birthdate"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->birthdate?></label>
                 <div class="controls">
                     <input type="date" max="<?=date('Y-m-d', strtotime('-18 years')) ?>" name="birthdate"  class="span3" placeholde="yyy-mm-dd" required value="<?=array_get($form_values, 'birthdate', '')?>" /> 
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['citizenship']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['citizenship']) ? 'error' : '' ?>">
                 <label class="control-label" for="citizenship"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->citizenship?></label>
                 <div class="controls">
                     <select name="citizenship" class="span3" required> 
@@ -126,7 +128,7 @@
                     </select>
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['equipment']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['equipment']) ? 'error' : '' ?>">
                 <label class="control-label" for="equipment"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->equipement?></label>
                 <div class="controls">
                     <select name="equipment" class="span3" required value="<?=array_get($form_values, 'equipment', '')?>"> 
@@ -154,7 +156,7 @@
                     </select>
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['email']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['email']) ? 'error' : '' ?>">
                 <label class="control-label" for="email"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->email?></label>
                 <div class="controls">
                     <input type="email" name="email" placeholder="you@provider.domain" class="span3" required value="<?=array_get($form_values, 'email', '')?>" /> 
@@ -164,19 +166,19 @@
 
         <fieldset class="span6">
             <legend>Booking data</legend>
-            <div class="control-group <?= isset($form_errors['arrival']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['arrival']) ? 'error' : '' ?>">
                 <label class="control-label" for="arrival"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->arrival?></label>
                 <div class="controls">
                     <input type="date" min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="arrival"  placeholder="2014-mm-dd" class="span3" required value="<?=array_get($form_values, 'arrival', '')?>" /> 
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['departure']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['departure']) ? 'error' : '' ?>">
                 <label class="control-label" for="departure"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->departure?></label>
                 <div class="controls">
                     <input type="date" min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="departure" placeholder="2014-mm-dd" class="span3" required value="<?=array_get($form_values, 'departure', '')?>" /> 
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['pitch']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['pitch']) ? 'error' : '' ?>">
                 <label class="control-label" for="pitch"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->fav_pitch?></label>
                 <div class="controls">
                     <select name="pitch" class="span3" size="1" requierd> 
@@ -206,7 +208,7 @@
                     </select>
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['adults']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['adults']) ? 'error' : '' ?>">
                 <label class="control-label" for="adults"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->adults?></label>
                 <div class="controls">
                     <select name="adults" class="span3" required> 
@@ -214,14 +216,14 @@
                         foreach (range(1,10) as $_ => $v) {
                             printf('<option value="%s" %s>%s</option>', 
                                 $v, 
-                                $v == array_get($form_values, 'adults', '') ? 'selected' : '',
+                                $v == array_get($form_values, 'adults', 1) ? 'selected' : '',
                                 $v);
                         }
                     ?>
                     </select>
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['children']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['children']) ? 'error' : '' ?>">
                 <label class="control-label" for="children"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->children?></label>
                 <div class="controls">
                     <select name="children" class="span3" required value="<?=array_get($form_values, 'children', '0')?>"> 
@@ -229,14 +231,14 @@
                         foreach (range(0,10) as $_ => $v) {
                             printf('<option value="%s" %s>%s</option>', 
                                 $v, 
-                                $v == array_get($form_values, 'children', '') ? 'selected' : '',
+                                $v == array_get($form_values, 'children', 0) ? 'selected' : '',
                                 $v);
                         }
                     ?>
                     </select>
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['email_again']) ? error : '' ?>">
+            <div class="control-group <?= isset($form_errors['email_again']) ? 'error' : '' ?>">
                 <label class="control-label" for="email_again"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->email_again?></label>
                 <div class="controls">
                     <input type="email" name="email_again" placeholder="you@provider.domain" class="span3" required value="<?=array_get($form_values, 'email_again', '')?>" />
@@ -244,6 +246,23 @@
             </div>
         </fieldset>
     </div>
+    <fieldset>
+        <legend>Pet</legend>
+        <div class="row">
+            <div class="span6">
+                <blockquote style="text-align:left">
+                    <?php //todo: ?>
+                    TODO: write pet disclaimer
+                </blockquote>
+            </div>
+            <div class="span6">
+                <div class="control-group <?= isset($form_errors['with_pet']) ? 'error' : '' ?>">
+                    <em><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->with_pet?>&nbsp;<input type="checkbox" name="with_pet" style="margin-top:-4px" <?= array_get($form_values, 'with_pet', 1) ? 'checked="checked"' : '' ?>/></em>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
     <fieldset>
         <legend>Note</legend>
         <div class="row">

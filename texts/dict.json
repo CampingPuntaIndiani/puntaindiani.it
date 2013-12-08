@@ -32,10 +32,22 @@
             "to" : "",
             "pre" : "Gallery",
             "msg": {
-                "eng" : "upload your photoes =)",
+                "eng" : "upload your pictures =)",
                 "ned" : "upload uw foto's",
                 "ger" : "laden Sie Ihre Fotos",
                 "ita" : "caricate le vostre foto =)"
+            }
+        },
+        {
+            "active" : true,
+            "from" : "2013-12-08",
+            "to" : "2014-01-06",
+            "pre" : "",
+            "msg" : {
+                "eng": "<span class=\"text-error\">Merry Christmas and Happy new Year !</span>",
+                "ned": "<span class=\"text-error\">Vrolijk Kerstfeest en Gelukkig Nieuwjaar !</span>",
+                "ger": "<span class=\"text-error\">Frohe Weihnachten und Glueckliches neues Jahr !</span>",
+                "ita": "<span class=\"text-error\">Buon Natale e Felice anno nuovo !</span>"
             }
         }
     ],
@@ -275,6 +287,9 @@
             "reset":"reset",
             "TeC_label":"Bedingungen und Konditionen",
             "booking_ok" : "Buchung erfolgreich",
+            "with_pet" : "werden Sie unternehmen, Haustiere mit Ihnen?",
+            "yes": "ja",
+            "no": "nicht",
             "place_c": "Platz C",
             "place_b": "Platz B",
             "place_a": "Platz A",
@@ -383,6 +398,9 @@
             "reset":"reset",
             "TeC_label" : "algemene voorwaarden",
             "booking_ok" : "Boeken Succes",
+            "with_pet" : "Neemt u huisdieren mee?",
+            "yes": "ja",
+            "no": "geen",
             "place_c": "Plek C",
             "place_b": "Plek B",
             "place_a": "Plek A",
@@ -490,6 +508,9 @@
             "reset":"reset",
             "TeC_label" : "termini e condizioni",
             "booking_ok" : "Prenotazione Riuscita",
+            "with_pet" : "porterete animali domestici con voi?",
+            "yes": "si",
+            "no": "no",
             "place_c": "Piazz. C",
             "place_b": "Piazz. B",
             "place_a": "Piazz. A",
@@ -597,6 +618,9 @@
             "reset":"reset",
             "TeC_label" : "terms and conditions",
             "booking_ok" : "Booking Successful",
+            "with_pet": "are you taking any pets with you?",
+            "yes": "yes",
+            "no": "no",
             "place_c": "Pitch C",
             "place_b": "Pitch B",
             "place_a": "Pitch A",

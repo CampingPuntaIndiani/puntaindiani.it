@@ -127,6 +127,16 @@
         $form_values['equipment'] = array_get($_POST, 'equipment', '');
     }
 
+    if (($form_values['with_pet'] = filter_var(array_get($_POST, 'with_pet', null), 
+        FILTER_SANITIZE_NUMBER_INT)) === FALSE) {
+        if ($form_values['with_pet'] == 0 or $form_values['with_pet'] == 1) {
+            // pass
+        } else {   
+            $form_values['with_pet'] = FALSE;
+            $form_errors['with_pet'] = 'Not valid';
+        }
+    }
+
     if (count($form_errors) === 0) {
         $form_values['note'] = join(array(
             sprintf('Equipment %s', $form_values['equipment']),
@@ -148,6 +158,8 @@
 
                 'arrival' => $form_values['arrival'],
                 'departure' => $form_values['departure'],
+
+                'with_pet' => $form_values['with_pet']
             );
             $backend_response = Utils::load_remote_json($GLOBALS['backend_url'].'reserve/', $backend_post);
         } catch(Exception $ex) {
