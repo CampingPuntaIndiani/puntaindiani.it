@@ -51,7 +51,7 @@
             <td class="prices<?=(isset($GLOBALS['dict']->prices->low->person->type)?" ".$GLOBALS['dict']->prices->low->person->type:"")?>"><?=$GLOBALS['dict']->prices->low->person->price?></td>
           </tr>
           <tr>
-            <td><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->child?></td>
+            <td><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->child?> [2-12]</td>
             <td class="prices<?=(isset($GLOBALS['dict']->prices->low->child->type)?" ".$GLOBALS['dict']->prices->low->child->type:"")?>"><?=$GLOBALS['dict']->prices->low->child->price?></td>
             <td class="prices<?=(isset($GLOBALS['dict']->prices->middle->child->type)?" ".$GLOBALS['dict']->prices->middle->child->type:"")?>"><?=$GLOBALS['dict']->prices->middle->child->price?></td>
             <td class="prices<?=(isset($GLOBALS['dict']->prices->height->child->type)?" ".$GLOBALS['dict']->prices->height->child->type:"")?>"><?=$GLOBALS['dict']->prices->height->child->price?></td>
