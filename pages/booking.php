@@ -251,13 +251,13 @@
         <div class="row">
             <div class="span6">
                 <blockquote style="text-align:left">
-                    <?php //todo: ?>
-                    TODO: write pet disclaimer
+                    <?=join($GLOBALS['dict']->page->{$_SESSION['lang']}->pet_disclaimer_intro, '<br>')?>
+                    <a href="/index.php?page=pet_disclaimer" target="_blank"><span data-toggle="modal" data-target="#pet_disclaimer"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->pet_disclaimer_link?></span></a>
                 </blockquote>
             </div>
             <div class="span6">
                 <div class="control-group <?= isset($form_errors['with_pet']) ? 'error' : '' ?>">
-                    <em><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->with_pet?>&nbsp;<input type="checkbox" name="with_pet" style="margin-top:-4px" <?= array_get($form_values, 'with_pet', 1) ? 'checked="checked"' : '' ?>/></em>
+                    <em><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->with_pet?>&nbsp;<input type="checkbox" name="with_pet" style="margin-top:-4px" <?= array_get($form_values, 'with_pet', 0) == 1 ? 'checked="checked"' : '' ?>/></em>
                 </div>
             </div>
         </div>
@@ -280,4 +280,14 @@
     </footer>
 </form>
 
-    <script type="text/javascript" src="/static/js/booking.js"></script>
+<div class="modal hide fade" id="pet_disclaimer">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Pet disclaimer</h3>
+    </div>
+    <div class="modal-body">
+        <?=join($GLOBALS['dict']->page->{$_SESSION['lang']}->pet_disclaimer, '')?>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/booking.js"></script>

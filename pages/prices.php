@@ -71,11 +71,23 @@
             <td class="prices<?=(isset($GLOBALS['dict']->prices->height->visitor->type)?" ".$GLOBALS['dict']->prices->height->visitor->type:"")?>"><?=$GLOBALS['dict']->prices->height->visitor->price?></td>
             <td class="prices<?=(isset($GLOBALS['dict']->prices->low->visitor->type)?" ".$GLOBALS['dict']->prices->low->visitor->type:"")?>"><?=$GLOBALS['dict']->prices->low->visitor->price?></td>
           </tr>
+          <tr>
+            <td><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->dog?> ***</td>
+            <td class="prices<?=(isset($GLOBALS['dict']->prices->low->dog->type)?" ".$GLOBALS['dict']->prices->low->dog->type:"")?>"><?=$GLOBALS['dict']->prices->low->dog->price?></td>
+            <td class="prices<?=(isset($GLOBALS['dict']->prices->middle->dog->type)?" ".$GLOBALS['dict']->prices->middle->dog->type:"")?>"><?=$GLOBALS['dict']->prices->middle->dog->price?></td>
+            <td class="prices<?=(isset($GLOBALS['dict']->prices->height->dog->type)?" ".$GLOBALS['dict']->prices->height->dog->type:"")?>"><?=$GLOBALS['dict']->prices->height->dog->price?></td>
+            <td class="prices<?=(isset($GLOBALS['dict']->prices->low->dog->type)?" ".$GLOBALS['dict']->prices->low->dog->type:"")?>"><?=$GLOBALS['dict']->prices->low->dog->price?></td>
+          </tr>
         </tbody>
         <tfoot>
           <td colspan="5">
             <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->extra_explanation?><br>
-            <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->visitor_explanation?>
+            <?=$GLOBALS['dict']->page->{$_SESSION['lang']}->visitor_explanation?><br>
+            <span>
+              *** 
+              <?=join($GLOBALS['dict']->page->{$_SESSION['lang']}->pet_disclaimer_intro, '<br>')?>
+              <a href="/index.php?page=pet_disclaimer" target="_blank"><span data-toggle="modal" data-target="#pet_disclaimer"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->pet_disclaimer_link?></span></a>
+            </span>
           </td>
         </tfoot>
       </table>
@@ -89,3 +101,15 @@
           <img src="static/img/camping_map/CampingPuntaIndianiOfficialMap.jpg" alt="maps" style="width:100%" />
         </div>
       </div>
+
+      <div class="modal hide fade" id="pet_disclaimer">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3>Pet disclaimer</h3>
+        </div>
+        <div class="modal-body">
+          <?=join($GLOBALS['dict']->page->{$_SESSION['lang']}->pet_disclaimer, '')?>
+        </div>
+      </div>
+
+

@@ -7,7 +7,8 @@
         "gallery",
         "offers",
         "surroundings",
-        "booking"          
+        "booking",
+        "pet_disclaimer"
     ],
     "langs" : [
         "eng",

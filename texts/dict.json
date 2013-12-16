@@ -64,7 +64,8 @@
         "person"  : {"price": "10.00"},
         "child"   : {"price": "6.00"},
         "extra"   : {"price": "5.00"},
-        "visitor" : {"price": "9.00"}
+        "visitor" : {"price": "9.00"},
+        "dog" : {"price": "4.00"}
       },
       "middle" : {
         "periods" : [
@@ -76,7 +77,8 @@
         "person"  : {"price": "10.00", "type":"special"},
         "child"   : {"price": "6.00" , "type":"special"},
         "extra"   : {"price": "5.00"},
-        "visitor" : {"price": "9.00"}
+        "visitor" : {"price": "9.00"},
+        "dog" : {"price": "4.00"}
       },
       "height" : {
         "periods" : [
@@ -88,7 +90,8 @@
         "person"  : {"price": "11.00"},
         "child"   : {"price": "6.50"},
         "extra"   : {"price": "5.00"},
-        "visitor" : {"price": "9.00"}
+        "visitor" : {"price": "9.00"},
+        "dog" : {"price": "5.00"}
       }
     },
     "offers" : [
@@ -359,7 +362,30 @@
                 "<strong>Schicken Sie uns Fotos Ihrer wertvollsten Erinnerungen an Punta Indiani,</strong>",
                 "wir werden sie in unsere Fotogalerie aufnehmen. Sie kennen auch den Link Ihrer Videos von Punta Indiani schicken.",
                 "Wenn Sie uns Bilder oder Links schicken, tragen Sie die Verantwortlichkeit f&uuml;r den Inhalt. Unpassende Bilder oder Videos werden nicht ver&ouml;ffentlicht."
-            ]
+            ],
+            "pet_disclaimer": [
+              "Fuer das Mitbringen der Heimtiere auf den Campingplatz ist die Zustimmung der Direktion erforderlich",
+              "<h4>Hunde</h4>",
+              "<ul>",
+              "<li> sind NUR in Area C erlaubt</li>",
+              "<li> HUNDE SIND am STRAND, bei Toilettenanlage, am Spielplatz, im Parkplatz und in allen oeffentlichen Bereichen NICHT ERLAUBT.</li>", 
+              "<li> NICHT ERLAUBT DOBERMANN, PITT-BULL, ROTTWEILER and MOLOSSI.</li>",
+              "<li> MUSSEN NICHT STOEREN.</li>",
+              "<li> DUERFTEN NICHT UNBEAFSICHTIGT GELASSEN WERDEN.</li>",
+              "<li> sind auf dem Campingplatz immer an der KURZEN lEINE zu führen.</li>",
+              "<li> Mittelgrosse und grosse Hunde müssen immer einen Maulkorb tragen.</li>",
+              "<li> Das Mitbringen von aggressiven oder gefährlichen Hunden ist nicht erlaubt; die Entscheidung trifft die Direktion.</li>",
+              "<li> Fuer das Mitbringen des Hundes auf den Campingplatz ist die Zustimmung der Direktion erforderlich, dafuer muss zwingend das Impfbuch (EU-Heimtierausweis) des Hundes vorgelegt werden </li>",
+              "<li> Die fuer den Hund verantwortliche Person muss dafuer sorgen, dass der Hund nicht stoert und den Campingplatz nicht verunreinigt, das heisst, der Hund muss seine Notdurft ausserhalb des Campingplatzes verrichten (ruesten sich zu schoepfen un Tasche)</li>",
+              "<li> Der Hundebesitzer ist verantwortlich für alle Personen- oder Sachschäden, die der Hund verursac.</li>",
+              "<li> Hundebesitzer, die diese Regelungen nicht befolgen, werden aufgefordert den Campingplatz unverzüglich zu verlasse.</li>",
+              "</ul>"
+            ],
+            "pet_disclaimer_intro": [
+               "Fuer das Mitbringen des Hundes auf dem Campingplatz ist die Zustimmung der Direktion erforderlich, nach folgenden"
+             ],
+            "pet_disclaimer_link": "Regeln",
+            "dog": "Hund"
         },
         "ned": {
             "send_photo" : [
@@ -471,7 +497,30 @@
                 "<strong>Stuur ons foto's van uwdierbaarste herinneringen aan Punta Indiani</strong>",
                 "en wijplaatsen ze op onze foto gallery. <br>U kunt ons ook de link van uw video's van Punta Indiani doorgeven.",
                 "Als u ons foto's of links stuurt, dan bent u zelf verantwoordelijk voor het onderwerp. Ongepaste foto's en video's worden niet geplaatst."
-            ]
+            ],
+            "pet_disclaimer": [
+              "De aanwezigheid van dieren moet gemeld worden aan de receptie op het moment van reservering en of aankomst, tijdens de check-in.",
+              "<h4>Honden</h4>",
+              "<ul>",
+              "<li> zjin toegestaan ALLEEN in Area C.</li>",
+              "<li> ZIJN NIET op op het STRAND TOEGESTAAN, in het TOILET GEBOUW, in the SPEELTUINEN en in de PARKINGS.</li>", 
+              "<li> NIET TOEGESTAAN DOBERMANN, PITT-BULL, ROTTWEILER and MOLOSSI.</li>",
+              "<li> MOETEN NIET STOREN.</li>",
+              "<li> MOETEN NIET ONBEHEERD WORDEN ACHTERGELATEN.</li>",
+              "<li> Honden moeten aan een korte LIJN LOPEN.</li>",
+              "<li> Half grote en grote honden moeten een muilkorf dragen.</li>",
+              "<li> Rassen van honden en of dieren die gevaarlijk zijn of lastig zijn kunnen door de direktie van de camping worden gestuurd.</li>",
+              "<li> De aankomst moet worden goedgekeurd door de direktie en ze moeten een gezondheidskaart met vaccinaties bij zich hebben.</li>",
+              "<li> moeten worden genomen buiten de camping voor hun lichamelijke behoeften. (mee te nemen scoop en tassen)</li>",
+              "<li> eigenaars moeten de eerbiediging van de sanitaire regels en bent zelf verantwoordelijk voor eventuel schade veroorzaakt door hun honden.</li>",
+              "<li> De eigenaar van de honden die zich niet aan de regels houden worden meteen van de camping gestuurd</li>",
+              "</ul>"
+            ],
+            "pet_disclaimer_intro": [
+              "De aankomst moet worden goedgekeurd door de direktie en op deze"
+            ],
+            "pet_disclaimer_link": "voorwaarden",
+            "dog": "Hond"
         },
         "ita": {
             "send_photo" : [
@@ -579,7 +628,31 @@
                 "<strong>Inviateci le foto con i vostri pi&ugrave; bei ricordi di Punta Indiani</strong>",
                 "e le pubblicheremo sulla gallery, potete inviare anche i link dei vostri video di Punta Indiani.",
                 "Inviando foto o link vi assumete la responsabilit&aacute;... per i contenuti, foto o video dai contenuti impropri non saranno pubblicati."
-            ]
+            ],
+            "pet_disclaimer": [
+              "La presenza di animali deve essere segnalata alla Direzione al momento della prenotazione e check-in.",
+              "<h4>I cani:</h4>",
+              "<ul>",
+              "<li> Sono ammessi SOLO in area C.</li>",
+              "<li> NON SONO AMMESSI sulla SPIAGGIA, nei SERVIZI, nei PARCO GIOCHI, nei PARCHEGGI, e in tutti i luoghi comuni.</li>",
+              "<li> NON sono accettati: dobermann, pitt bull, rottweiler e molossi.</li>",
+              "<li> NON DEVONO ARRECARE DISTURBO.</li>",
+              "<li> NON DEVONO ESSERE LASCIATI INCUSTODITI.</li>",
+              "<li> Devono essere tenuti al GUINZAGLIO CORTO.</li>",
+              "<li> Cani di MEDIA E GROSSA TAGLIA devono essere sempre muniti di museruola.</li>",
+              "<li> Razze di cani e animali ritenuti pericolosi o segnalati tali dalle autorita' competenti possono essere, a discrezione della Direzione, allontanati dal Campeggio.</li>",
+              "<li> Il loro ingresso è subordinato ad autorizzazione e presentazione di libretto sanitario/vaccinazoni.</li>",
+              "<li> Devono essere accompagnati per i loro bisogni fuori dal complesso turistico. (munirsi di paletta e sacchetti)</li>",
+              "<li> I proprietari devono assicurare il rispetto delle norme igienico-sanitarie e sono responsabili di eventuali danni arrecati dagli animali a persone e cose.</li>",
+              "<li> I proprietari che trasgrediranno queste disposizioni verranno pregati di lasciare immediatamente il campeggio.</li>",
+              "</ul>"
+            ],
+            "pet_disclaimer_intro": [ 
+              "Cani ammessi previo accordo con la direzione",
+              "E secondo le seguenti"
+            ],
+            "pet_disclaimer_link": "condizioni",
+            "dog": "Cane"
         },
         "eng": {
             "send_photo" : [
@@ -691,7 +764,31 @@
                 "and we will publish them in the photo gallery. <br>You can also send us your video links of Punta Indiani.",
                 "<br>If you send us photos or links, you take responsibility for the contents.",
                 "Pictures or videos with an innappropriate content will not be published."
-            ]
+            ],
+            "pet_disclaimer": [
+              "Pets owners must declare their pet when making reservation or on arrival.",
+              "<h4>Dogs</h4>",
+              "<ul>",
+              "<li> They are allowed only in area C.</li>",
+              "<li> DOGS ARE NOT ALLOWED on the BEACH, in the SERVICES, on PLAYGROUNDS and in the PARKINGS.</li>", 
+              "<li> NOT ALLOWED DOBERMANN, PITT-BULL, ROTTWEILER and MOLOSSI.</li>",
+              "<li> MUST NOT DISTURB.</li>",
+              "<li> MUST NOT BE LEFT UNATTENDED.</li>",
+              "<li> they must be kept on a SHORT LEASH at all times.</li>",
+              "<li> medium and large size dogs must wear muzzle.</li>",
+              "<li> the Management can decide not to welcome dogs declared dangerous or aggressive.</li>",
+              "<li> the entrance in the campsite must be authorised by the management. Sanitary condition certificate is compulsory to welcome dog in the campsite</li>",
+              "<li> must be taken outside the campsite for their physical needs. (take with you scoop and bags)</li>",
+              "<li> owners must ensure respect of sanitary rules and are personally responsible for any damage caused by their dogs.</li>",
+              "<li> dogs owners who do not comply with these rules will be kindly asked to leave the camp-site.</li>",
+              "</ul>"
+            ],
+            "pet_disclaimer_intro": [
+              "Dog entrance must be pre-authorized by the Management",
+              "at the following"
+            ],
+            "pet_disclaimer_link": "condition",
+            "dog": "Dog"
         }
     }
 }
