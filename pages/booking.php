@@ -3,7 +3,6 @@
     $rsv_opening = strtotime('2014-01-01');
     if (time() < $rsv_opening) {
         printf("<p style='font-size:14pt;text-align:center'>We will open reservations again <strong>January 1, 2014</strong></p>");
-        # TODO: comment for dev
         return;
     }
 
@@ -33,8 +32,7 @@
 
     if (isset($_POST['booking_code']) and $old_booking_code !== null) {
         if($old_booking_code == $_POST['booking_code']) { // Valid request
-            # TODO: uncomment to enable booking request!
-            # $booking_status = include('libs/reserve.php');
+            $booking_status = include('libs/reserve.php');
         } else { // Unvalid Request (code expired or not set)
             printf("<script>(function(){window.location.replace('/');})()</script>"); // (Clean browser POST history)
             printf('<a href="/" target="_self" class="span12 btn btn-warning">Plaese click here to continue</a>'); // No JS fallback
@@ -107,10 +105,10 @@
                     <input type="text" name="name" placeholder="Alice" class="span3" pattern="[a-zA-Z ]{2,255}" required value="<?=array_get($form_values, 'name', '')?>" />  
                 </div>
             </div>
-            <div class="control-group <?= isset($form_errors['birthdate']) ? 'error' : '' ?>">
-                <label class="control-label" for="birthdate"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->birthdate?></label>
+            <div class="control-group <?= isset($form_errors['birth_date']) ? 'error' : '' ?>">
+                <label class="control-label" for="birth_date"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->birth_date?></label>
                 <div class="controls">
-                    <input type="date" max="<?=date('Y-m-d', strtotime('-18 years')) ?>" name="birthdate"  class="span3" placeholde="yyy-mm-dd" required value="<?=array_get($form_values, 'birthdate', '')?>" /> 
+                    <input type="date" max="<?=date('Y-m-d', strtotime('-18 years')) ?>" name="birth_date"  class="span3" placeholder="yyyy-mm-dd" required value="<?=array_get($form_values, 'birth_date', '')?>" /> 
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['citizenship']) ? 'error' : '' ?>">
@@ -257,7 +255,7 @@
             </div>
             <div class="span6">
                 <div class="control-group <?= isset($form_errors['with_pet']) ? 'error' : '' ?>">
-                    <em><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->with_pet?>&nbsp;<input type="checkbox" name="with_pet" style="margin-top:-4px" <?= array_get($form_values, 'with_pet', 0) == 1 ? 'checked="checked"' : '' ?>/></em>
+                    <em><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->with_pet?>&nbsp;<input type="checkbox" name="with_pet" style="margin-top:-4px" <?= array_get($form_values, 'with_pet', 0) == 1 ? 'checked="checked"' : '' ?> value='1'/></em>
                 </div>
             </div>
         </div>

@@ -93,10 +93,10 @@
         $form_errors['name'] = $form_errors['departure'] = 'You sould arrive before leaving.';
     }
 
-    if (strtotime(array_get($_POST, 'birthdate', null)) === FALSE) {
-        $form_errors['birthdate'] = 'Not valid';
+    if (strtotime(array_get($_POST, 'birth_date', null)) === FALSE) {
+        $form_errors['birth_date'] = 'Not valid';
     } else {
-        $form_values['birthdate'] = $_POST['birthdate'];
+        $form_values['birth_date'] = $_POST['birth_date'];
     }
 
     if (($form_values['citizenship']  = filter_var(array_get($_POST, 'citizenship', null), 
@@ -127,15 +127,7 @@
         $form_values['equipment'] = array_get($_POST, 'equipment', '');
     }
 
-    if (($form_values['with_pet'] = filter_var(array_get($_POST, 'with_pet', null), 
-        FILTER_SANITIZE_NUMBER_INT)) === FALSE) {
-        if ($form_values['with_pet'] == 0 or $form_values['with_pet'] == 1) {
-            // pass
-        } else {   
-            $form_values['with_pet'] = FALSE;
-            $form_errors['with_pet'] = 'Not valid';
-        }
-    }
+    $form_values['with_pet'] = isset($_POST['with_pet']) ? 1 : 0;
 
     if (count($form_errors) === 0) {
         $form_values['note'] = join(array(
@@ -151,7 +143,7 @@
                 'email' => $form_values['email'],
                 'citizenship' => $form_values['citizenship'],
 
-                'birthdate' => $form_values['birthdate'],
+                'birth_date' => $form_values['birth_date'],
                 'ip' => $_SERVER['REMOTE_ADDR'],
                 'note' => $form_values['note'],
                 'pitch' => $form_values['pitch'],
@@ -170,8 +162,8 @@
         if ($backend_response->{'success'} == TRUE) {
             function i18n_email(&$dict, $lang_key) {
                 $keys = array('reservation_code', 'client_id', 'surname', 'name',
-                    'birthdate', 'citizenship', 'arrival', 'departure',
-                    'fav_pitch', 'note');
+                    'birth_date', 'citizenship', 'arrival', 'departure',
+                    'fav_pitch', 'with_pet', 'note');
                 $max_length = 0;
                 foreach($keys as $_ => $key){
                     $max_length = max($max_length, 
@@ -188,6 +180,7 @@
                 }
                 return $mail_text_array;
             }
+            // TODO: handle here different email for 'with pet'
 
             $mail_data = $backend_post;
             unset($mail_data['ip']);
