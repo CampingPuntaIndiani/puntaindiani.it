@@ -333,7 +333,8 @@
                 "Punta Indiani dankt Ihnen fuer Ihre Reservierung, hier folgen Ihre Daten.",
                 "Wenn sie nicht richtig sind, so bitten wir uns zu informieren mittels E-Mail an info@campingpuntaindiani.it",
                 "Aus Organisationsgruenden behaltet die Direktion sich das Recht die Reservierung eines bestimmten Platzes zu aendern",
-                "Bald erhalten Sie von uns eine E-Mail worin wir Ihre reservierte Platznummer/Bereich mitteilen, zusammen mit Anweisungen fuer die Zahlung der Kaution, die Ihre Reservierung garantieren wird."
+                "Anfang April erhalten Sie von uns eine E-Mail worin wir Ihre reservierte Platznummer/Bereich mitteilen, zusammen mit Anweisungen fuer die Zahlung der Kaution, die Ihre Reservierung garantieren wird."
+                "!!! Bitte schreiben Sie Ihre Client Code und Ihre Reservation Code in alle emails !!!"
             ],
             "child": "Kind",
             "pdf": "Printversion. Auskunfte uber die Route und die Preise in einen einfachen pdf.",
@@ -600,7 +601,6 @@
                 "Per motivi organizzativi la direzione si riserva il diritto di cambiare il numero della piazzola.",
                 "Inizio aprile Riceverete una mail con il numero - l'area che Vi e' stata riservata e le istruzioni per il pagamento della caparra che garantisce la prenotazione.",
                 "!!! Riportare il codice cliente ed il codice prenotazione in ogni email. !!!"
-
             ],
             "child": "Bambino",
             "pdf": "Scarica e stampa prezzi, mappa del campeggio e le informazioni su come raggiungerci.",
@@ -733,7 +733,7 @@
             "booking_mail": [
                 "Punta Indiani thanks you for your booking.",
                 "Please check your information below, if it is not correct we kindly ask you to let us know by email to info@campingpuntaindiani.it.",
-                "In few days You will receive an email with the number/area that we reserved for you, together with instructions for the deposit payment that will confirm your booking.",
+                "In the first days of April You will receive an email with the number/area that we reserved for you, together with instructions for the deposit payment that will confirm your booking.",
                 "The pitch number can be changed due to organizational reasons",
                 "!!! Please report Your Client Code and Reservation Code in all mails !!!"
             ],

@@ -180,7 +180,6 @@
                 }
                 return $mail_text_array;
             }
-            // TODO: handle here different email for 'with pet'
 
             $mail_data = $backend_post;
             unset($mail_data['ip']);
@@ -191,7 +190,7 @@
             $mail_data['client_id'] = $backend_response->client_id;
 
             $guest_mail = new Mail(
-                join(i18n_email($mail_data, $_SESSION['lang']), "\r\n"),
+                join($GLOBALS['dict']->page->{$_SESSION['lang']}->booking_mail + i18n_email($mail_data, $_SESSION['lang']), "\r\n"),
                 $form_values['email'],
                 'info@campingpuntaindiani.it',
                 sprintf('Reservation: %s', $backend_response->reservation_id));
