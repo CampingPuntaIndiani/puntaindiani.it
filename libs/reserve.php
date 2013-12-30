@@ -90,7 +90,7 @@
     }
 
     if ($arrival_sec !== FALSE and $departure_sec !== FALSE and $arrival_sec > $departure_sec) {
-        $form_errors['name'] = $form_errors['departure'] = 'You sould arrive before leaving.';
+        $form_errors['arrival'] = $form_errors['departure'] = 'You sould arrive before leaving.';
     }
 
     if (strtotime(array_get($_POST, 'birth_date', null)) === FALSE) {
@@ -190,7 +190,7 @@
             $mail_data['client_id'] = $backend_response->client_id;
 
             $guest_mail = new Mail(
-                join($GLOBALS['dict']->page->{$_SESSION['lang']}->booking_mail + i18n_email($mail_data, $_SESSION['lang']), "\r\n"),
+                join($GLOBALS['dict']->page->{$_SESSION['lang']}->booking_mail + array('','') + i18n_email($mail_data, $_SESSION['lang']), "\r\n"),
                 $form_values['email'],
                 'info@campingpuntaindiani.it',
                 sprintf('Reservation: %s', $backend_response->reservation_id));
@@ -200,7 +200,7 @@
                 join(i18n_email($mail_data, 'eng'),"\r\n"),
                 'info@campingpuntaindiani.it',
                 $form_values['email'],
-                sprintf('wres: %s', $backend_response->reservation_id));
+                sprintf('wres2k14: %s', $backend_response->reservation_id));
             $office_mail->send();
             return TRUE;
         } else {

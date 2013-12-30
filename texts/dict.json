@@ -333,7 +333,8 @@
                 "Punta Indiani dankt Ihnen fuer Ihre Reservierung, hier folgen Ihre Daten.",
                 "Wenn sie nicht richtig sind, so bitten wir uns zu informieren mittels E-Mail an info@campingpuntaindiani.it",
                 "Aus Organisationsgruenden behaltet die Direktion sich das Recht die Reservierung eines bestimmten Platzes zu aendern",
-                "Anfang April erhalten Sie von uns eine E-Mail worin wir Ihre reservierte Platznummer/Bereich mitteilen, zusammen mit Anweisungen fuer die Zahlung der Kaution, die Ihre Reservierung garantieren wird."
+                "Anfang April erhalten Sie von uns eine E-Mail worin wir Ihre reservierte Platznummer/Bereich mitteilen, zusammen mit Anweisungen fuer die Zahlung der Kaution, die Ihre Reservierung garantieren wird.",
+                "Hausordnung: http://www.puntaindiana.it?page=rules&lang=ger",
                 "!!! Bitte schreiben Sie Ihre Client Code und Ihre Reservation Code in alle emails !!!"
             ],
             "child": "Kind",
@@ -469,6 +470,7 @@
                 "Indien de gegevens onjuist zijn, dan wordt u vriendelijk verzocht dit te melden door een email te sturen naar info@campingpuntaindiani.it",
                 "kort U ontvangt van ons een email met het gereserveerde plaatsnummer/de zone, samen met instructies voor het overmaken van een aanbetaling die uw plaatsreservering zal garanderen.",
                 "Van het directoraat Organisationsgruenden behouden het recht om de reservering van een bepaalde plaats te veranderen.",
+                "Camping reglement: http://www.puntaindiana.it?page=rules&lang=ned",
                 "!!! Rapporteren in elke e-mail de client-code en de reserveringscode !!!"
             ],
             "child": "Kind",
@@ -600,6 +602,7 @@
                 "Se non sono corretti Vi preghiamo di comunicarlo tramite mail a info@campingpuntaindiani.it",
                 "Per motivi organizzativi la direzione si riserva il diritto di cambiare il numero della piazzola.",
                 "Inizio aprile Riceverete una mail con il numero - l'area che Vi e' stata riservata e le istruzioni per il pagamento della caparra che garantisce la prenotazione.",
+                "Regolamento: http://www.puntaindiana.it?page=rules&lang=ita",
                 "!!! Riportare il codice cliente ed il codice prenotazione in ogni email. !!!"
             ],
             "child": "Bambino",
@@ -735,6 +738,7 @@
                 "Please check your information below, if it is not correct we kindly ask you to let us know by email to info@campingpuntaindiani.it.",
                 "In the first days of April You will receive an email with the number/area that we reserved for you, together with instructions for the deposit payment that will confirm your booking.",
                 "The pitch number can be changed due to organizational reasons",
+                "Camping regulations: http://www.puntaindiana.it?page=rules",
                 "!!! Please report Your Client Code and Reservation Code in all mails !!!"
             ],
             "child": "Child",
