@@ -13,7 +13,7 @@ class MBCurl {
         # open connection
         $ch = curl_init();
 
-        global $curl_user, $curl_pwd;
+        global $curl_user, $curl_pwd, $curl_host;
 
         $options = array(
             CURLOPT_URL => $url,
@@ -29,6 +29,7 @@ class MBCurl {
             CURLOPT_TIMEOUT        => 120,      // timeout on response
             CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
             CURLOPT_SSL_VERIFYPEER => false,    // Ops... self signed cert.. fuck verisign
+            CURLOPT_HTTPHEADER     => array('Host: backend.martin-dev.tk'), // Django ALLOWED HOSTS
             CURLOPT_HTTPAUTH       => CURLAUTH_BASIC, //auth type (https+http_auth are enought for non sensitive data)
             CURLOPT_USERPWD        => sprintf('%s:%s', $curl_user, $curl_pwd) //http auth
         );
