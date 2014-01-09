@@ -108,7 +108,7 @@
             <div class="control-group <?= isset($form_errors['birth_date']) ? 'error' : '' ?>">
                 <label class="control-label" for="birth_date"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->birth_date?></label>
                 <div class="controls">
-                    <input type="date" max="<?=date('Y-m-d', strtotime('-18 years')) ?>" name="birth_date"  class="span3" placeholder="yyyy-mm-dd" required value="<?=array_get($form_values, 'birth_date', '')?>" /> 
+                    <input type="text" data-autofix='date' max="<?=date('Y-m-d', strtotime('-18 years')) ?>" name="birth_date"  class="span3" placeholder="yyyy-mm-dd" required value="<?=array_get($form_values, 'birth_date', '')?>" /> 
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['citizenship']) ? 'error' : '' ?>">
@@ -167,13 +167,13 @@
             <div class="control-group <?= isset($form_errors['arrival']) ? 'error' : '' ?>">
                 <label class="control-label" for="arrival"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->arrival?></label>
                 <div class="controls">
-                    <input type="date" min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="arrival"  placeholder="2014-mm-dd" class="span3" required value="<?=array_get($form_values, 'arrival', '')?>" /> 
+                    <input type="text" data-autofix='date' min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="arrival"  placeholder="2014-mm-dd" class="span3" required value="<?=array_get($form_values, 'arrival', '')?>" /> 
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['departure']) ? 'error' : '' ?>">
                 <label class="control-label" for="departure"><?=$GLOBALS['dict']->page->{$_SESSION['lang']}->departure?></label>
                 <div class="controls">
-                    <input type="date" min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="departure" placeholder="2014-mm-dd" class="span3" required value="<?=array_get($form_values, 'departure', '')?>" /> 
+                    <input type="text" data-autofix='date' min="<?=$options->{'opening'}?>" max="<?=$options->{'closure'}?>" name="departure" placeholder="2014-mm-dd" class="span3" required value="<?=array_get($form_values, 'departure', '')?>" /> 
                 </div>
             </div>
             <div class="control-group <?= isset($form_errors['pitch']) ? 'error' : '' ?>">
@@ -288,4 +288,4 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/static/js/booking.js"></script>
+<script type="text/javascript" src="/static/js/autofix.js"></script>
