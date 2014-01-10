@@ -165,10 +165,8 @@
                     'birth_date', 'citizenship', 'arrival', 'departure',
                     'fav_pitch', 'with_pet', 'note');
                 $max_length = 0;
-                foreach($keys as $_ => $key){
-                    $max_length = max($max_length, 
-                        strlen(array_get($GLOBALS['dict']->page->{$lang_key}, $key, $key)),
-                        strlen(array_get($dict, $key, $key)));
+                foreach($keys as &$key){
+                    $max_length = max($max_length, strlen(array_get($GLOBALS['dict']->page->{$lang_key}, $key, $key)));
                 }
                 $mail_text_array = array();
                 $format_string = sprintf('%%-%ds:%%s', $max_length+4);
