@@ -13,15 +13,17 @@
         date_str = input.val(),
         date_a = date_str.split(/[^0-9]/),
         ndate_a = [],
-        error = false;
+        error = false,
+        curr_year = new Date().getFullYear();
 
       if (date_a.length === 2) {
         // we suppose day/month
-        ndate_a = [(new Date().getFullYear()), date_a[1], date_a[0]];
+        ndate_a = [curr_year, date_a[1], date_a[0]];
       } else if (date_a.length === 3) {
         if (date_str.indexOf('-') !== -1) {
           // we suppose year-month-day
           // nothing to do
+          ndate_a = date_a;
         } else {
           // we suppose day/month/year
           ndate_a = date_a.reverse();
@@ -29,6 +31,16 @@
       } else {
         // invalid data
         error = true;
+      }
+
+      // expand year (if required)
+      if (!error && ndate_a[0].length <= 2) {
+        ndate_a[0] = parseInt(ndate_a[0]);
+        if (ndate_a[0] < curr_year % 100) {
+          ndate_a[0] += Math.floor(curr_year / 100) * 100;
+        } else {
+          ndate_a[0] += (Math.floor(curr_year / 100) - 1) * 100;
+        }
       }
 
       date_str = $.map(ndate_a, function(e){
