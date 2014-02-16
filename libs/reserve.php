@@ -170,7 +170,7 @@
                 }
                 $mail_text_array = array();
                 $format_string = sprintf('%%-%ds:%%s', $max_length+4);
-                foreach($keys as $_ => $key) {
+                foreach($keys as &$key) {
                     array_push($mail_text_array, sprintf(
                         $format_string,
                         array_get($GLOBALS['dict']->page->{$lang_key}, $key, $key),

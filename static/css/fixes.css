@@ -17,7 +17,7 @@ li a{
 .navbar a.logo{
   max-height: 40px;
   height: 40px;
-  padding: 0 !important;  
+  padding: 0 !important;
 }
 
 .navbar a.logo > img {
@@ -168,7 +168,7 @@ form label.control-label, form button, form a {text-transform: capitalize;}
 
 /* youtube fix */
 .gallery-video-placeholder:after {
-  content: '-'; 
+  content: '-';
   color: rgba(0,0,0,0);
 }
 
@@ -213,8 +213,8 @@ form label.control-label, form button, form a {text-transform: capitalize;}
   -webkit-box-shadow: inset 0px 1px 2px rgba(0,0,0,0.5);
   -moz-box-shadow: inset 0px 1px 2px rgba(0,0,0,0.5);
   box-shadow: inset 0px 1px 2px rgba(0,0,0,0.5);
-} 
- 
+}
+
 #news_ticker ul {
   float: left;
   padding-left: 5px;
@@ -262,3 +262,36 @@ footer.actions{
   padding-top: 5px
 }
 
+/* camping map */
+#points div {
+  position: absolute;
+  display: block;
+  background-image: url('/static/img/camping_map/map_pointer.png');
+  background-size: 40px;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 32px;
+  /* pure empirical */
+  margin-top: -2px;
+  margin-left:  10px;
+}
+
+
+#points div:hover {
+  -ms-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+}
+
+#points [selected] {
+  background-image: url('/static/img/camping_map/map_pointer_sel.svg');
+}
+
+#view {
+    background-image: url("/static/img/blueimp/loading.gif");
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 200px;
+}
