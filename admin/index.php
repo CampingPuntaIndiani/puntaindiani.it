@@ -5,6 +5,7 @@
   include_once '../libs/media.inc.php';
 
   $link = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die('Error '.mysqli_error($link));
+  $link->autocommit(TRUE);
 
   $errors = array();
 
@@ -38,9 +39,7 @@
             }
         }
 
-        print($query."\n");
-
-        if ($query !== FALSE and $link->query($query) !== TRUE) {
+        if ($query and !$link->query($query)) {
             array_push($errors, sprintf('ID:%s to state %s', $id, $authorized));
         }
     }

@@ -41,7 +41,8 @@ $uploaded = array(
     'accepted' => array()
 );
 
-$link = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die('Error '.mysqli_error($link));
+
+$tmp = array();
 
 $norm_FILES=get_normalized_FILES();
 foreach ($norm_FILES['photoes'] as $key => $photo) {
@@ -76,16 +77,68 @@ foreach ($norm_FILES['photoes'] as $key => $photo) {
     $ico = $ico_path.$new_name.$ico_ext;
     $resizer->saveImage($ico);
 
-    // update db
-    if ($stmt = $link->prepare("INSERT INTO photoes (name, file_name, uploader_email, authorized, uploaded_datetime, album_id) VALUES (?,?,?,0,?,(SELECT id FROM album WHERE name = ?))")) {
-        $stmt->bind_param("sssss", $photo['name'], $new_name, $_POST['email'], $now->format('Y-m-d H:i:s'), strtolower($_POST['album']));
-        $stmt->execute();
-        $stmt->close();
+    $tmp[] = array(
+        'name' => $photo['name'],
+        'new_name' => $new_name,
+        'original' => $original,
+        'big' => $big,
+        'ico' => $ico
+    );
+}
+
+// update db
+$link = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or muori('Error '.mysqli_error($link));
+$link->autocommit(FALSE);
+
+$album_name = strtolower($_POST['album']);
+
+if (strlen($album_name) > 0) {
+    $album_stmt = $link->prepare('SELECT id FROM album WHERE name = ?') or muori('search album query');
+    $album_stmt->bind_param('s', $album_name) or muori('preparing album params');
+    $album_stmt->execute() or muori('album search execution 1');
+    $album_stmt->bind_result($album_id);
+
+    if (!($album_stmt->fetch())) {
+        $album_create_stmt = $link->prepare('INSERT INTO album (name) VALUES (?)') or muori('album create query');
+        $album_create_stmt->bind_param('s', $album_name);
+        $album_create_stmt->execute();
+
+        $album_stmt->execute() or muori('album search execution 2');
+        $album_stmt->fetch() or muori('error on album creation/retriving');
     }
 
-    $uploaded['accepted'][] = $photo['name'];
+    $album_stmt->close();
+} else {
+    $album_id = 1;
 }
-/* close connection */
+
+// cache
+$email = $_POST['email'];
+$now_str = $now->format('Y-m-d H:i:s');
+// end cache
+
+$stmt = $link->prepare("INSERT INTO photoes (name, file_name, uploader_email, authorized, uploaded_datetime, album_id) VALUES (?,?,?,0,?,?)") or muori('insert query');
+foreach($tmp as &$img) {
+    $stmt->bind_param("ssssd", $img['name'], $img['new_name'], $email, $now_str, $album_id);
+    $stmt->execute() or muori('img insertion');
+    $uploaded['accepted'][] = $img['name'];
+}
+
+$stmt->close();
+$link->commit();
+$link->autocommit(TRUE);
 $link->close();
+
 print(json_encode($uploaded));
+
+function muori($msg) {
+    $link->rollback();
+    $link->close();
+    foreach($tmp as &$img) {
+        unlink($img['original']);
+        unlink($img['big']);
+        unlink($img['ico']);
+    }
+    die($msg);
+}
 ?>

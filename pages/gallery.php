@@ -42,9 +42,9 @@
       <?php
         $query = join(array(
             "SELECT photoes.name, file_name, uploader_email, album.name",
-            "FROM photoes, album",
-            "WHERE album_id=album.id AND album.show=1 AND authorized=1 ",
-            "ORDER BY album.priority DESC, photoes.priority, RAND()"),
+            "FROM photoes JOIN album ON album_id=album.id",
+            "WHERE album.show=1 AND authorized=1 ",
+            "ORDER BY album.priority DESC, album_id, photoes.priority DESC, RAND()"),
             " ");
         if ($stmt = $link->prepare($query)) {
           $stmt->execute();
