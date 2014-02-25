@@ -294,4 +294,7 @@ footer.actions{
     background-repeat: no-repeat;
     width: 100%;
     min-height: 200px;
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:        border-box;
 }
