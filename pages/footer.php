@@ -28,7 +28,8 @@
             </ul>
           </section>
         </section>  
-        <span class="centered"><p>&copy; Camping Punta Indiani snc - Martin Brugnara - 2014</p></span>
+        <span class="centered"><p>&copy; Martin Brugnara 2010-2014 <br> 
+                                  Camping Punta Indiani Snc di Piffer Renzo e C. - P.IVA 01834810226<p></span>
       </footer>
     </div>
 
