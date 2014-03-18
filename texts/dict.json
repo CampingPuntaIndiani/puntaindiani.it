@@ -175,6 +175,33 @@
           "title" : "Camping Key Europe",
           "body" : "Low Season: 2 Mensen + 1 Pitch B o C = &euro;18 al een dag"
         }
+      },
+      {
+        "img" : "static/img/offers/giro_d_italia.png",
+        "eng" :
+        {
+          "available" : true,
+          "title" : "18th stage of Giro d'Italia 2014 in Valsugana - Panarotta 2014-05-29",
+          "body" : "from 2014-05-28 to 2014-05-30: 1 pitch + 2 person + children (< 12 years) = 18.00&euro; per night."
+        },
+        "ita" :
+        {
+          "available" : true,
+          "title" : "18 tappa del Giro d' Italia in Valsugana - Panarotta, 29 maggio 2014",
+          "body" : "dal 2014-05-28 al 2014-05-30: 1 piazzola + 2 adulti + bambini (< 12 anni) = 18.00&euro; a notte."
+        },
+        "ger":
+        {
+          "available" : true,
+          "title" : "18. Etappe des Radrennens Giro d'Italia 2014 im Valsugana Panarotta, 29. mai 2014",
+          "body" : "vom 2014-05-28 bis 2014-05-30: 1 Platz + 2 Erwachsene + zusätzlich Kinder bis 12 Jah = 18.00&euro; pro Nacht"
+        },
+        "ned":
+        {
+          "available" : true,
+          "title": "18de etappe van de ronde van Italie 2014 in Valsugana, Panarotta 29 mei 2014",
+          "body": "van 2014-05-28 tot 2014-05-30: 1 Plek + 2 volwassenen + eventueel kinderen tot 12 jaar = 18.00&euro; per nacht."
+        }
       }
     ],
     "zoover" : 
