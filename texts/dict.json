@@ -49,6 +49,18 @@
                 "ger": "<span class=\"text-error\">Frohe Weihnachten und Glueckliches neues Jahr !</span>",
                 "ita": "<span class=\"text-error\">Buon Natale e Felice anno nuovo !</span>"
             }
+        }, 
+        {
+            "active": true,
+            "from": "2014-06-06",
+            "to": "2014-06-21",
+            "pre": "Spezial Pfingsten",
+            "msg": {
+                "eng": "2014-6-7 -> 2014-6-21: family pack: Area A from 36.00 , Area B-C from 26.00.",
+                "ita": "2014-6-7 -> 2014-6-21: family pack: Area A from 36.00 , Area B-C from 26.00.",
+                "ger": "2014-6-7 -> 2014-6-21: family pack: Area A from 36.00 , Area B-C from 26.00.",
+                "ned": "2014-6-7 -> 2014-6-21: family pack: Area A from 36.00 , Area B-C from 26.00."
+            }
         }
     ],
     "prices" : {
@@ -226,8 +238,8 @@
         "ned" : 
         {
           "available" : true,
-          "title" : "BIJ DE RONDE VAN ITALIË BEKLIM DE BERGEN EN OVERNACHT AAN HET MEER",
-          "body" : "2014-6-7 -> 2014-6-21: 1 night + 1 pitch + 2 people + children: Area A &euro;36.00 , Area B-C &euro;26.00."
+          "title" : "Special Spring",
+          "body" : "2014-6-7 -> 2014-6-21: 1 nachten + 1 plaats + 2 volwassenen + kinderen: Area A &euro;36.00 , Area B-C &euro;26.00."
         }
       }
     ],
