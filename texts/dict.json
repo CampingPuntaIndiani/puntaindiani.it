@@ -243,6 +243,86 @@
         }
       }
     ],
+    "services" : [
+      {
+        "img" : "static/img/services/TrentinoGuestCard.jpg",
+        "eng" : 
+        {
+          "available" : true,
+          "title" : "Guest Card",
+          "body" : [
+            "Camping Punta Indiani offers gratis for all guests:",
+            "Guest Card Trentino gives you free admission to museums, castles and nature parks and to free travel throughout Trentino on the province’s public transport system for your entire holiday."
+          ]
+        },
+        "ita" : 
+        {
+          "available" : true,
+          "title" : "Guest Card",
+          "body" : [
+            "Camping Punta Indiani offre gratis a tutti gli ospiti:",
+            "Guest Card Trentino è la chiave per entrare nei musei, castelli, parchi naturali e viaggiare liberamente in tutto il Trentino con il trasporto pubblico provinciale per tutta la vacanza."
+          ]
+        },
+        "ger" : 
+        {
+          "available" : true,
+          "title" : "Guest Card",
+          "body" : [
+            "Camping Punta Indiani bietet gratis allen Kunden:",
+            "Guest Card Trentino ist Ihr Schlüssel, um freien Eintritt zu Museen, Schlössern und Naturparks zu haben und für die Dauer Ihres Urlaubs im ganzen Trentino die öffentlichen Verkehrsmittel der Provinz zu nutzen."
+          ]
+        },
+        "ned" : 
+        {
+          "available" : true,
+          "title" : "Guest Card",
+          "body" : [
+            "Camping Punta Indiani biedt gratis voor alle gasten:",
+            "Guest Card Trentino gives you free admission to museums, castles and nature parks and to free travel throughout Trentino on the province’s public transport system for your entire holiday."
+          ]
+        }
+      },
+      {
+        "img" : "static/img/services/LiveLoveValsugana.png",
+        "eng" : 
+        {
+          "available" : true,
+          "title" : "<a href='http://www.livelovevalsugana.it/en/' target='_balnk'>Live Love Valsugana</a>",
+          "body" : [
+            "Be prepared for your vacation!",
+            "Discover the experiences that your stay in Valsugana offers."
+          ]
+        },
+        "ger" : 
+        {
+          "available" : true,
+          "title" : "<a href='http://www.livelovevalsugana.it/de/' target='_balnk'>Live Love Valsugana</a>",
+          "body" : [
+            "Fuer Ihren Urlaub vorbereitet sein!",
+            "Entdecken Sie die Erfahrungen, die Ihren Aufenthalt in Valsugana anbietet."
+          ]
+        },
+        "ita" : 
+        {
+          "available" : true,
+          "title" : "<a href='http://www.livelovevalsugana.it/it/' target='_balnk'>Live Love Valsugana</a>",
+          "body" : [
+            "Sii pronto per la tua vacanza!",
+            "Scopri le esperienze che il tuo soggiorno in Valsugana puo' offrirti."
+          ]
+        },
+        "ned" : 
+        {
+          "available" : true,
+          "title" : "<a href='http://www.livelovevalsugana.it/nl/' target='_balnk'>Live Love Valsugana</a>",
+          "body" : [
+            "Be prepared for your vacation!",
+            "Discover the experiences that your stay in Valsugana offers."
+          ]
+        }
+      }
+    ],
     "zoover" : 
     {
       "ita" : "http://www.zoover.it/italia/trentinoalto-adige/caldonazzo/punta-indiani-a-valcanover/campeggio",
@@ -265,6 +345,7 @@
             "location": "Weg",
             "prices": "Preise",
             "home": "Home",
+            "services": "Services",
             "login": "Login",
             "book": "Reservierung"
         },
@@ -281,6 +362,7 @@
             "location": "The Route",
             "prices": "Prijzen",
             "home": "Home",
+            "services": "Services",
             "login": "Login",
             "book": "Reserven"
         },
@@ -297,6 +379,7 @@
             "location": "Dove Siamo",
             "prices": "Prezzi",
             "home": "Home",
+            "services": "Servizi",
             "login": "Entra",
             "book": "Prenota"
         },
@@ -313,6 +396,7 @@
             "location": "The Route",
             "prices": "Prices",
             "home": "Home",
+            "services": "Services",
             "login": "Login",
             "book": "Reservations"
         }
@@ -731,8 +815,8 @@
                 "If you send us photos or links, you take responsibility for the contents.",
                 "Pictures or videos with an innappropriate content will not be published."
              ],
-            "surname" : "surname",
-            "name":"name",
+            "surname" : "last name",
+            "name":"first name",
             "citizenship" : "citizenship",
             "birth_date":"birth date",
             "birthplace":"native town",

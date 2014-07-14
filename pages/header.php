@@ -100,6 +100,7 @@
             <li class="<?=($_SESSION['page']=="gallery"?"active":"")?>"><a href="/?page=gallery" data-page="gallery"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->gallery?></a></li>
             <li class="<?=($_SESSION['page']=="offers"?"active":"")?>"><a href="/?page=offers" data-page="offers"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->offers?></a></li>
             <li class="<?=($_SESSION['page']=="surroundings"?"active":"")?>"><a href="/?page=surroundings" data-page="surroundings"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->surroundings?></a></li>
+            <li class="<?=($_SESSION['page']=="services"?"active":"")?>"><a href="/?page=services" data-page="services"><?=$GLOBALS['dict']->menu->{$_SESSION['lang']}->services?></a></li>
           </ul>
          
           <ul class="nav pull-right langs">
