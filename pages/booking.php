@@ -42,6 +42,7 @@
 
     try {
         $options = Utils::load_remote_json($GLOBALS['backend_url'].'/options/');
+        $backend_error = FALSE;
     } catch (Exception $e){
         $backend_error = TRUE;
         $admin_mail =  new Mail($e, "martin.brugnara@gmail.com", 'PHP@puntaindiana.it', 'connection error');
@@ -50,14 +51,18 @@
         }
     }
 
-    if(isset($backend_error)){
+    if($backend_error === TRUE){ // can not connect to backend
         $message_type = 'error';
         $message_title = 'Looks like something went wrong!';
         $message_body = join(array(
             'We track these errors automatically, but if the problem persists feel free to contact us.',
-            'In the meantime, try refreshing.'), '<br>');
+            'In the meantime, try refreshing.',
+            '',
+            'If is not getting better please feel free to write us with a plain mail at',
+            '<a href="mailto:info@campingpuntaindiani.it">info@campingpuntaindiani.it</a>'), '<br>');
         $message_footer = 'Please try again later.';
-    } else if(isset($booking_status) and $booking_status !== TRUE and $booking_status !== FALSE){
+    } else if(isset($booking_status) and $booking_status !== TRUE and $booking_status !== FALSE){ 
+        // backend error: $booking status will contain the curl error message
         $message_type = 'error';
         $message_title = 'Looks like something went wrong  with your Reservation!';
         $message_body = 'We track these errors automatically, but if the problem persists feel free to contact us.';

@@ -25,11 +25,11 @@ class MBCurl {
             CURLOPT_ENCODING       => "",       // handle all encodings
             CURLOPT_USERAGENT      => "spider", // who am i
             CURLOPT_AUTOREFERER    => true,     // set referer on redirect
-            CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
-            CURLOPT_TIMEOUT        => 120,      // timeout on response
+            CURLOPT_CONNECTTIMEOUT => 4,      // timeout on connect in seconds
+            CURLOPT_TIMEOUT        => 6,      // timeout on response in seconds
             CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
-            CURLOPT_SSL_VERIFYPEER => false,    // Ops... self signed cert.. fuck verisign
-            CURLOPT_HTTPHEADER     => array('Host: backend.martin-dev.tk'), // Django ALLOWED HOSTS
+            CURLOPT_SSL_VERIFYPEER => false,    // fuck verysign (self signed CA) 
+            CURLOPT_HTTPHEADER     => array('Host: backend.martin-dev.eu'), // Django ALLOWED HOSTS
             CURLOPT_HTTPAUTH       => CURLAUTH_BASIC, //auth type (https+http_auth are enought for non sensitive data)
             CURLOPT_USERPWD        => sprintf('%s:%s', $curl_user, $curl_pwd) //http auth
         );

@@ -72,8 +72,8 @@
   <?=$css?>
 }
     </style>
-    <!-- this has to be loaded as soon as is possible otherwaise some inline js will not work -->
-    <script type="text/javascript" src="/static/js/jquery-2.0.3.min.js"></script>
+    <!-- this has to be loaded as soon as is possible otherwise some inline js will not work -->
+    <script type="text/javascript" src="/static/js/jquery-2.1.1.min.js"></script>
 
   </head>
   <body>

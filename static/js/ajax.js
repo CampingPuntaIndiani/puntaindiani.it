@@ -41,7 +41,8 @@
           _gaq.push(['_trackPageview', last_loaded_page+'_'+window.start_up.curr_lang+'_error']);
           $('#topbar ul.nav > li.active').removeClass('active');
           this.parent('li').addClass('active');
-          $('section[name=body]').html(error);
+          $('section[name=body]').html("Something went wrong... =(<br>Please try to reload the page.");
+          console.error(error);
         }
       // we are not using complete while we need a more responsive 
       // (maps sometimes does not load... =( )
