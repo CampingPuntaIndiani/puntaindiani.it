@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * Reuturn:
+ * TRUE: all went good
+ * FALSE: valdiation error
+ * string: fuck something terrible went wrong (500)
+ * */
+
+
+
     include_once('libs/MBCurl.php');
     include_once('libs/Mail.php');
 
