@@ -40,7 +40,9 @@ Afdaling met de auto: bij viersprong rechts aanhouden naar Pergine. Leuke route.
 </dd>
 <dt>Trento en waterval</dt>
 <dd>
+<del datetime="2014-08-02T14:45:00+01:00">
 Vlak bij Trento ligt een leuke waterval in een mooie Schlucht. Vanaf camping richting Trento. Neem afslag San Don&#224 en draai rechts onder de weg door. Aan het eind van de straat rechts en vrij snel links. Weg klimt iets en er staan spiegels langs de weg. Je komt bij restaurant Ponte Alto. Mocht je de weg kwijt raken, vraag dan naar Ponte Alto. Daar parkeren en via het restaurant kan je tegen betaling afdalen naar de Schlucht en de waterval. Loop zo ver mogelijk door. Je kunt 'achter de val' komen. Als er water stroomt, is dat een heel leuk gezicht. Je kunt er wat nat worden.</br>
+</del>
 Na bezoek aan de val - en wat drinken? - kan je doorrijden naar Trento. Heeft heel mooi centrum met twee mooi kerken: de Dom en de Maria Maggiore kerk. In die laatste kerk is het bekende en beruchte concilie van Trente (Trento) gehouden. Tijdens die kerkelijke vergadering werd Luther in de ban gedaan en de protestanten tot ketters verklaard. In de kerk zijn nog altijd attributen, die aan dat concilie herinneren en aan de processie die ter gelegenheid van het concilie is gehouden.</br>
 Bij het station is een mooi park. In het centrum staat een groot beeld van de bekende dichter Dante, die in Trento heeft geleefd en gewerkt.</br>
 </br>
