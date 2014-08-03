@@ -9,4 +9,8 @@
     $curl_pwd = '4h2MaEBmQ9hVbLvn';
     $curl_user = 'puntaindiana';
     $backend_url = 'https://localhost/';
+
+    global $mail_user, $mail_pass;
+    $mail_user = "info@campingpuntaindiani.it";
+    $mail_pass = "";
 ?>
