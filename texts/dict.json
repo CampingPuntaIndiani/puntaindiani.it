@@ -16,9 +16,9 @@
     "news" : [
         {
             "active" : true,
-            "from" : "2013-08-24",
-            "to" : "2013-10-1",
-            "pre" : "26-08-2013",
+            "from" : "2014-08-08",
+            "to" : "2014-10-1",
+            "pre" : "25-08-2014",
             "msg": {
                 "eng" : "low season",
                 "ned" : "laagseizoen",
@@ -68,7 +68,7 @@
       "low" : {
         "periods" : [
           { "from" : "27-04", "to" : "30-06" },
-          { "from" : "01-09", "to" : "30-09" }
+          { "from" : "25-08", "to" : "30-09" }
         ],
         "place_a" : {"price":"10.00"},
         "place_b" : {"price":"", "type":"gratis"},
@@ -94,7 +94,7 @@
       },
       "height" : {
         "periods" : [
-          { "from" : "11-07", "to" : "31-08" }
+          { "from" : "11-07", "to" : "24-08" }
         ],
         "place_a" : {"price": "18.00"},
         "place_b" : {"price": "15.00"},
